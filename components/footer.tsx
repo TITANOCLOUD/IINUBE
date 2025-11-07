@@ -25,14 +25,9 @@ export function Footer() {
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#00c4cc]" />
-                <div className="flex flex-col">
-                  <a href="tel:+5244429000182" className="hover:text-[#00c4cc] transition-colors">
-                    +52 442 900 0182 <span className="text-xs text-slate-500">(México)</span>
-                  </a>
-                  <a href="tel:+17868225999" className="hover:text-[#00c4cc] transition-colors">
-                    +1 786 822 5999 <span className="text-xs text-slate-500">(Miami)</span>
-                  </a>
-                </div>
+                <a href="tel:+17868225999" className="hover:text-[#00c4cc] transition-colors">
+                  +1 786 822 5999 <span className="text-xs text-slate-500">(Miami)</span>
+                </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#00c4cc]" />

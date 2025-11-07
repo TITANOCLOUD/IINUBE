@@ -14,8 +14,7 @@ const SQL_INJECTION_PATTERNS = [
   /exec\s*\(/i,
 ]
 
-// System prompt for Loise
-const LOISE_SYSTEM_PROMPT = `Eres Loise, Arquitecta Cloud senior en Titanocloud, experta en infraestructura cloud e inteligencia artificial.
+const LOISE_SYSTEM_PROMPT = `Eres Aníbal Hernández, Gerente de Infraestructura y Ciberseguridad en IINBUE, experto en infraestructura cloud e inteligencia artificial.
 
 Tu misión es:
 - Validar la infraestructura tecnológica en la nube del cliente: equipos, servicios, arquitectura, seguridad, rendimiento, escalabilidad.
@@ -95,7 +94,7 @@ export async function POST(req: Request) {
         JSON.stringify({
           error: "authentication_required",
           message:
-            "🔒 Para continuar con la consulta y contratación de servicios, necesitas iniciar sesión o crear una cuenta en Titanocloud.\n\nSi ya tienes cuenta, por favor inicia sesión. Si eres nuevo, puedes registrarte de forma gratuita.",
+            "🔒 Para continuar con la consulta y contratación de servicios, necesitas iniciar sesión o crear una cuenta en IINBUE.\n\nSi ya tienes cuenta, por favor inicia sesión. Si eres nuevo, puedes registrarte de forma gratuita.",
           requiresLogin: true,
         }),
         {
