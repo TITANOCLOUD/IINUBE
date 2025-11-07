@@ -9,6 +9,20 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  output: 'standalone',
+  async headers() {
+    return [
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-Subdomain',
+            value: 'tienda.iinube.com',
+          },
+        ],
+      },
+    ]
+  },
 }
 
 export default nextConfig

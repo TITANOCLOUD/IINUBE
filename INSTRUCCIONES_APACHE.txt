@@ -1,0 +1,59 @@
+INSTRUCCIONES PARA DESPLEGAR EN cPanel/WHM CON APACHE/PASSENGER
+================================================================
+
+1. CREAR SUBDOMINIO EN cPanel:
+   - Ve a cPanel → Subdominios
+   - Crear nuevo subdominio:
+     * Subdominio: tienda
+     * Dominio: iinube.com
+     * Document Root: /home/iinube/tienda
+   - Guardar
+
+2. SUBIR ARCHIVOS AL SERVIDOR:
+   - Sube todos los archivos del proyecto a: /home/iinube/tienda/
+   - Asegúrate de incluir:
+     * Todos los archivos del proyecto
+     * node_modules/ (o instala con npm install)
+     * .next/ (carpeta de build)
+     * .htaccess
+     * server.js
+
+3. INSTALAR DEPENDENCIAS (vía SSH):
+   cd /home/iinube/tienda
+   npm install
+   npm run build
+
+4. VERIFICAR PASSENGER:
+   - En WHM → Software → Application Manager
+   - Verificar que Node.js esté instalado
+   - Verificar ruta de Node: /usr/bin/node (o la correcta en tu servidor)
+
+5. CONFIGURAR PERMISOS:
+   chmod 755 /home/iinube/tienda
+   chmod 644 /home/iinube/tienda/.htaccess
+   chmod 644 /home/iinube/tienda/server.js
+
+6. REINICIAR PASSENGER:
+   mkdir -p /home/iinube/tienda/tmp
+   touch /home/iinube/tienda/tmp/restart.txt
+
+7. REDIRIGIR iinube.com → tienda.iinube.com (OPCIONAL):
+   - En el .htaccess de /home/iinube/public_html/ agrega:
+   
+   RewriteEngine On
+   RewriteCond %{HTTP_HOST} ^(www\.)?iinube\.com$ [NC]
+   RewriteRule ^(.*)$ https://tienda.iinube.com/$1 [R=301,L]
+
+8. VERIFICAR:
+   - Visita: https://tienda.iinube.com
+   - Debe cargar la aplicación Next.js
+
+TROUBLESHOOTING:
+- Si hay error 500: Revisa logs en cPanel → Metrics → Errors
+- Si no carga: Verifica que server.js tenga permisos correctos
+- Si archivos estáticos no cargan: Verifica que .next/static/ exista
+- Reinicia Passenger: touch tmp/restart.txt
+
+CONTACTO:
+Si tienes problemas, revisa los logs del servidor en:
+/home/iinube/logs/ o cPanel → Errors
