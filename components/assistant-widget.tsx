@@ -60,15 +60,11 @@ export function AssistantWidget() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Option 1: Send via WhatsApp
-    const whatsappNumber = "5213328346167"
+    const whatsappNumber = "523323131655"
     const whatsappMessage = `Hola, me llamo ${formData.name}.\n\nEmail: ${formData.email}\nTeléfono: ${formData.phone}\n\nMensaje: ${formData.message}`
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
 
     window.open(whatsappUrl, "_blank")
-
-    // Option 2: Send via Email (if you want both options)
-    // You can implement a server action here to send email to management@iinube.com
 
     setIsSubmitting(false)
     setShowContactForm(false)
@@ -96,7 +92,7 @@ export function AssistantWidget() {
       return "Genial, estás en contacto. Si prefieres hablar directamente, ¡llámame!"
     }
 
-    return "Hola, soy Manuel Fraustro, Director Comercial para LATAM de IINBUE. Estoy aquí para ayudarte con cualquier duda sobre nuestros servicios. ¿En qué puedo asistirte?"
+    return "Hola, soy Manuel Fraustro, Director Comercial LATAM de IINBUE. Estoy aquí para ayudarte con cualquier duda sobre nuestros servicios. ¿En qué puedo asistirte?"
   }
 
   if (isMinimized) {
@@ -196,7 +192,7 @@ export function AssistantWidget() {
                   <Button
                     variant="outline"
                     className="w-full border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 bg-transparent"
-                    onClick={() => window.open("tel:+5213328346167", "_self")}
+                    onClick={() => window.open("tel:+523323131655", "_self")}
                   >
                     <Phone className="h-4 w-4 mr-2" />
                     Llamar Ahora

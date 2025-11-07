@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { useState, useEffect } from "react"
 import Image from "next/image"
+import { vpsPlans } from "@/data/vps-plans"
 
 export default function VPSPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
@@ -36,194 +37,6 @@ export default function VPSPage() {
   const [speedPhase, setSpeedPhase] = useState<"idle" | "download" | "upload" | "latency" | "complete">("idle")
   const [userIpInfo, setUserIpInfo] = useState<any>(null)
   const [showServerSelector, setShowServerSelector] = useState(false)
-
-  const vpsPlans = [
-    {
-      id: "basic",
-      name: "VPSi BASIC",
-      subtitle: "Ideal para proyectos pequeños",
-      cpu: 8,
-      ram: 4,
-      storage: 80,
-      bandwidth: "Hasta 2 Gbps",
-      price: 1590,
-      setupFee: "Gratis",
-      processor: "DUAL INTEL XEON GOLD 6542Y",
-      features: [
-        "4GB RAM DDR5",
-        "8v CPU DUAL INTEL XEON GOLD 6542Y",
-        "80GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "inter",
-      name: "VPSi INTER",
-      subtitle: "Para aplicaciones en crecimiento",
-      cpu: 8,
-      ram: 8,
-      storage: 180,
-      bandwidth: "Hasta 2 Gbps",
-      price: 2690,
-      setupFee: "Gratis",
-      processor: "DUAL INTEL XEON GOLD 6542Y",
-      features: [
-        "8GB RAM DDR5",
-        "8v CPU DUAL INTEL XEON GOLD 6542Y",
-        "180GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "pro",
-      name: "VPSi PRO",
-      subtitle: "Alto rendimiento",
-      cpu: 8,
-      ram: 12,
-      storage: 280,
-      bandwidth: "Hasta 2 Gbps",
-      price: 3790,
-      setupFee: "Gratis",
-      recommended: true,
-      processor: "INTEL XEON GOLD 6542Y",
-      features: [
-        "12GB RAM DDR5",
-        "8v CPU INTEL XEON GOLD 6542Y",
-        "280GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "plus",
-      name: "VPSi PLUS",
-      subtitle: "Máxima potencia",
-      cpu: 8,
-      ram: 16,
-      storage: 380,
-      bandwidth: "Hasta 2 Gbps",
-      price: 4890,
-      setupFee: "Gratis",
-      processor: "INTEL XEON GOLD 6542Y",
-      features: [
-        "16GB RAM DDR5",
-        "8v CPU INTEL XEON GOLD 6542Y",
-        "380GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "prime",
-      name: "VPSi PRIME",
-      subtitle: "Nivel empresarial",
-      cpu: 16,
-      ram: 24,
-      storage: 480,
-      bandwidth: "Hasta 2 Gbps",
-      price: 5990,
-      setupFee: "Gratis",
-      processor: "DUAL INTEL XEON GOLD 6542Y",
-      features: [
-        "24GB RAM DDR5",
-        "16v CPU DUAL INTEL XEON GOLD 6542Y",
-        "480GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "xprime",
-      name: "VPSi XPRIME",
-      subtitle: "Potencia superior",
-      cpu: 16,
-      ram: 32,
-      storage: 580,
-      bandwidth: "Hasta 2 Gbps",
-      price: 6990,
-      setupFee: "Gratis",
-      processor: "DUAL INTEL XEON GOLD 6542Y",
-      features: [
-        "32GB RAM DDR5",
-        "16v CPU DUAL INTEL XEON GOLD 6542Y",
-        "580GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "zprime",
-      name: "VPSi ZPRIME",
-      subtitle: "Extremo rendimiento",
-      cpu: 32,
-      ram: 64,
-      storage: 980,
-      bandwidth: "Hasta 2 Gbps",
-      price: 10990,
-      setupFee: "Gratis",
-      processor: "INTEL XEON GOLD 6542Y",
-      features: [
-        "64GB RAM DDR5",
-        "32v CPU INTEL XEON GOLD 6542Y",
-        "980GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-    {
-      id: "colossal",
-      name: "VPSi COLOSSAL",
-      subtitle: "El titán supremo",
-      cpu: 32,
-      ram: 128,
-      storage: 1580,
-      bandwidth: "Hasta 2 Gbps",
-      price: 15990,
-      setupFee: "Gratis",
-      processor: "DUAL INTEL XEON GOLD 6542Y",
-      features: [
-        "128GB RAM DDR5",
-        "32v CPU DUAL INTEL XEON GOLD 6542Y",
-        "1,580GB SSD NVME",
-        "UPLINK HASTA 2 GBPS",
-        "DNS 24HRS",
-        "1 IP FIJA IPV4 E IPV6",
-        "99% UPTIME",
-        "TRANSFERENCIA ILIMITADA",
-        "ALTA DISPONIBILIDAD",
-      ],
-    },
-  ]
 
   const datacenters = [
     { id: "ny", name: "Nueva York", x: 25, y: 35, type: "primary" },
@@ -1257,6 +1070,225 @@ export default function VPSPage() {
               <p className="text-slate-400">
                 Despliega tu VPS en múltiples ubicaciones estratégicas alrededor del mundo para baja latencia
               </p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 text-white">Configura tu VPS</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">
+            Personaliza tu servidor con recursos adicionales según tus necesidades
+          </p>
+        </div>
+        <div className="max-w-4xl mx-auto">
+          <Card className="bg-slate-900 border-slate-800">
+            <CardHeader>
+              <CardTitle className="text-2xl text-white">Upgrades Disponibles</CardTitle>
+              <CardDescription className="text-slate-400">
+                Agrega recursos adicionales a tu VPS en cualquier momento
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-6">
+              <div className="grid md:grid-cols-3 gap-6">
+                <Card className="bg-slate-800 border-slate-700">
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <Server className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                      <h3 className="text-white font-bold text-lg mb-2">Disco Duro</h3>
+                      <div className="text-3xl font-bold text-cyan-400 mb-2">$250</div>
+                      <p className="text-slate-400 text-sm mb-4">MXN por cada 50 GB</p>
+                      <div className="bg-slate-900 rounded p-3 text-left space-y-1">
+                        <p className="text-slate-300 text-xs">✓ SSD NVMe adicional</p>
+                        <p className="text-slate-300 text-xs">✓ 50 GB por unidad</p>
+                        <p className="text-slate-300 text-xs">✓ Alta velocidad</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-slate-800 border-slate-700">
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <Activity className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                      <h3 className="text-white font-bold text-lg mb-2">CPU</h3>
+                      <div className="text-3xl font-bold text-cyan-400 mb-2">$200</div>
+                      <p className="text-slate-400 text-sm mb-4">MXN por cada 2v núcleos</p>
+                      <div className="bg-slate-900 rounded p-3 text-left space-y-1">
+                        <p className="text-slate-300 text-xs">✓ 2v núcleos adicionales</p>
+                        <p className="text-slate-300 text-xs">✓ Intel Xeon Gold</p>
+                        <p className="text-slate-300 text-xs">✓ Alto rendimiento</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
+                <Card className="bg-slate-800 border-slate-700">
+                  <CardContent className="pt-6">
+                    <div className="text-center">
+                      <Zap className="w-12 h-12 text-cyan-400 mx-auto mb-4" />
+                      <h3 className="text-white font-bold text-lg mb-2">Memoria RAM</h3>
+                      <div className="text-3xl font-bold text-cyan-400 mb-2">$300</div>
+                      <p className="text-slate-400 text-sm mb-4">MXN por cada 2 GB</p>
+                      <div className="bg-slate-900 rounded p-3 text-left space-y-1">
+                        <p className="text-slate-300 text-xs">✓ 2 GB RAM DDR5</p>
+                        <p className="text-slate-300 text-xs">✓ Última generación</p>
+                        <p className="text-slate-300 text-xs">✓ Más velocidad</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-20 bg-slate-950/50">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 text-white">Complementos</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Agrega software y servicios adicionales a tu VPS</p>
+          <p className="text-cyan-400 text-sm mt-2">*Precios de lista a partir del primero de febrero del 2025</p>
+        </div>
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-6">
+          <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-all">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center justify-between">
+                <span>USUARIOS</span>
+                <span className="text-2xl text-cyan-400">$70.00</span>
+              </CardTitle>
+              <CardDescription className="text-slate-400">
+                Usuario TSPlus de acceso seguro a servidor virtual
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Agregar</Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-all">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center justify-between">
+                <span>OFFICE STANDARD</span>
+                <span className="text-2xl text-cyan-400">$17,640.00</span>
+              </CardTitle>
+              <CardDescription className="text-slate-400">Office LTSC Standard 2024 Perpetuo</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Agregar</Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-all">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center justify-between">
+                <span>OFFICE</span>
+                <span className="text-2xl text-cyan-400">$400.00</span>
+              </CardTitle>
+              <CardDescription className="text-slate-400">Microsoft 365 Business Standard (Mensual)</CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Agregar</Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-all">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center justify-between">
+                <span>ANTIVIRUS</span>
+                <span className="text-2xl text-cyan-400">$3,500.00</span>
+              </CardTitle>
+              <CardDescription className="text-slate-400">
+                ESET Server Security para Windows Server Licencia Anual
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Agregar</Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-all">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center justify-between">
+                <span>RESPALDOS</span>
+                <span className="text-2xl text-cyan-400">$2,500.00</span>
+              </CardTitle>
+              <CardDescription className="text-slate-400">
+                Backups Licencia Anual para Respaldos Automatizados
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Agregar</Button>
+            </CardFooter>
+          </Card>
+
+          <Card className="bg-slate-900 border-slate-800 hover:border-cyan-500/50 transition-all">
+            <CardHeader>
+              <CardTitle className="text-white flex items-center justify-between">
+                <span>SEGURIDAD</span>
+                <span className="text-2xl text-cyan-400">$5,757.00</span>
+              </CardTitle>
+              <CardDescription className="text-slate-400">
+                TSplus Advanced Security Ultimate Licencia Perpetua
+              </CardDescription>
+            </CardHeader>
+            <CardFooter>
+              <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Agregar</Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </section>
+
+      <section className="container mx-auto px-4 py-20">
+        <div className="text-center mb-12">
+          <h2 className="text-4xl font-bold mb-4 text-white">Términos y Condiciones</h2>
+          <p className="text-slate-400 max-w-2xl mx-auto">Información importante sobre nuestros servicios</p>
+        </div>
+        <div className="max-w-4xl mx-auto space-y-6">
+          <Card className="bg-slate-900 border-slate-800">
+            <CardHeader>
+              <CardTitle className="text-white">Licencias TSPlus Advanced Security</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-slate-300">
+                En la licencia TSPlus Advanced Security al año sólo se compra la actualización correspondiente al 21%
+                del valor del producto. El precio del software NO incluye servicios, capacitación o instalación.
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-slate-900 border-slate-800">
+            <CardHeader>
+              <CardTitle className="text-white">Tiempos de Entrega</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="border-l-4 border-cyan-500 pl-4">
+                <h3 className="text-white font-semibold mb-2">Servidores VPSi Nuevos</h3>
+                <p className="text-slate-300">⏱️ 4 horas oficina</p>
+                <p className="text-slate-400 text-sm">Horario: L-V 9 a 3 y 4 a 6 PM</p>
+              </div>
+
+              <div className="border-l-4 border-blue-500 pl-4">
+                <h3 className="text-white font-semibold mb-2">Escalamientos</h3>
+                <p className="text-slate-300">⏱️ 1 hora oficina</p>
+                <p className="text-slate-400 text-sm">Horario: L-V 9 a 3 y 4 a 6 PM</p>
+              </div>
+
+              <div className="border-l-4 border-purple-500 pl-4">
+                <h3 className="text-white font-semibold mb-2">Complementos Adicionales</h3>
+                <p className="text-slate-300">⏱️ 6 horas oficina</p>
+                <p className="text-slate-400 text-sm">Horario: L-V 9 a 3 y 4 a 6 PM</p>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="bg-gradient-to-br from-orange-500/10 to-red-600/10 border-orange-500/30">
+            <CardContent className="pt-6">
+              <div className="space-y-3 text-center">
+                <p className="text-orange-300 font-semibold text-lg">⚠️ PRECIOS SUJETOS A CAMBIO SIN PREVIO AVISO</p>
+                <p className="text-orange-200">Los precios mostrados son más IVA y en moneda nacional (MXN)</p>
+              </div>
             </CardContent>
           </Card>
         </div>

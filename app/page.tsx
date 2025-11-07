@@ -18,6 +18,7 @@ import {
 } from "lucide-react"
 import Image from "next/image"
 import { useState, useEffect } from "react"
+import { getFeaturedVPSPlans } from "@/data/vps-plans"
 
 export default function Home() {
   const [currentSlide, setCurrentSlide] = useState(0)
@@ -780,31 +781,27 @@ export default function Home() {
           <p className="text-slate-400 max-w-2xl mx-auto">VPS escalables con recursos dedicados y control total</p>
         </div>
         <div className="grid md:grid-cols-3 gap-6">
-          {[
-            { name: "VPS Básico", cpu: "2 vCPU", ram: "4 GB RAM", storage: "80 GB SSD", price: "$300 MXN/mes" },
-            { name: "VPS Pro", cpu: "4 vCPU", ram: "8 GB RAM", storage: "160 GB SSD", price: "$700 MXN/mes" },
-            { name: "VPS Enterprise", cpu: "8 vCPU", ram: "16 GB RAM", storage: "320 GB SSD", price: "$1,400 MXN/mes" },
-          ].map((plan) => (
-            <Card key={plan.name} className="bg-slate-900 border-slate-800">
+          {getFeaturedVPSPlans().map((plan) => (
+            <Card key={plan.id} className="bg-slate-900 border-slate-800">
               <CardHeader>
                 <CardTitle className="text-cyan-400">{plan.name}</CardTitle>
-                <CardDescription className="text-slate-400">Ideal para aplicaciones escalables</CardDescription>
+                <CardDescription className="text-slate-400">{plan.subtitle}</CardDescription>
               </CardHeader>
               <CardContent className="space-y-3">
                 <div className="flex items-center gap-2 text-slate-300">
                   <Cpu className="w-4 h-4 text-cyan-400" />
-                  <span>{plan.cpu}</span>
+                  <span>{plan.cpu}v CPU</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <Server className="w-4 h-4 text-cyan-400" />
-                  <span>{plan.ram}</span>
+                  <span>{plan.ram} GB RAM DDR5</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300">
                   <HardDrive className="w-4 h-4 text-cyan-400" />
-                  <span>{plan.storage}</span>
+                  <span>{plan.storage} GB SSD NVMe</span>
                 </div>
                 <div className="pt-4 border-t border-slate-800">
-                  <p className="text-3xl font-bold text-white">{plan.price}</p>
+                  <p className="text-3xl font-bold text-white">${plan.price.toLocaleString()} MXN/mes</p>
                 </div>
               </CardContent>
               <CardFooter>
