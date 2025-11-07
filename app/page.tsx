@@ -117,6 +117,8 @@ export default function Home() {
   const handleSendMessage = async () => {
     if (!userInput.trim()) return
 
+    console.log("[v0] Sending message, isAuthenticated:", isAuthenticated) // added debug log
+
     // Add user message to chat
     const newMessages = [...messages, { role: "user" as const, content: userInput }]
     setMessages(newMessages)
@@ -124,6 +126,8 @@ export default function Home() {
     setIsAnalyzing(true)
 
     try {
+      console.log("[v0] Calling API with messages:", newMessages) // added debug log
+
       const response = await fetch("/api/loise/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -133,8 +137,11 @@ export default function Home() {
         }),
       })
 
+      console.log("[v0] API response status:", response.status) // added debug log
+
       if (!response.ok) {
         const errorData = await response.json()
+        console.log("[v0] API error data:", errorData) // added debug log
 
         if (errorData.requiresLogin) {
           setShowLoginPrompt(true)
