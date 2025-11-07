@@ -12,7 +12,7 @@ export function Footer() {
           <div>
             <Logo variant="minimal" className="mb-4" />
             <p className="text-slate-300 text-sm mb-4 leading-relaxed max-w-2xl">
-              IINBUE desarrolla infraestructura cloud de alto rendimiento
+              IINUBE desarrolla infraestructura cloud de alto rendimiento
               <br />
               que combina potencia, estabilidad y flexibilidad
               <br />
@@ -172,7 +172,7 @@ export function Footer() {
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-slate-400 text-sm text-center md:text-left">
-            © 2025 IINBUE Cloud Solutions. Todos los derechos reservados.
+            © 2025 IINUBE Cloud Solutions. Todos los derechos reservados.
           </p>
           <div className="flex gap-6 text-sm">
             <Link href="/privacy" className="text-slate-300 hover:text-[#00c4cc] transition-colors">

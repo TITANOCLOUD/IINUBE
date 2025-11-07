@@ -14,7 +14,7 @@ const SQL_INJECTION_PATTERNS = [
   /exec\s*\(/i,
 ]
 
-const LOISE_SYSTEM_PROMPT = `Eres Aníbal Hernández, Arquitecto Cloud en IINBUE, experto en infraestructura cloud e inteligencia artificial.
+const LOISE_SYSTEM_PROMPT = `Eres Aníbal Hernández, Arquitecto Cloud en IINUBE, experto en infraestructura cloud e inteligencia artificial.
 
 Tu misión es:
 - Validar la infraestructura tecnológica en la nube del cliente: equipos, servicios, arquitectura, seguridad, rendimiento, escalabilidad.
@@ -86,23 +86,7 @@ IMPORTANTE: Si el usuario no está registrado o autenticado, debes informarle qu
 
 export async function POST(req: Request) {
   try {
-    const { messages, isAuthenticated } = await req.json()
-
-    // Check if user is authenticated
-    if (!isAuthenticated) {
-      return new Response(
-        JSON.stringify({
-          error: "authentication_required",
-          message:
-            "🔒 Para continuar con la consulta y contratación de servicios, necesitas iniciar sesión o crear una cuenta en IINBUE.\n\nSi ya tienes cuenta, por favor inicia sesión. Si eres nuevo, puedes registrarte de forma gratuita.",
-          requiresLogin: true,
-        }),
-        {
-          status: 401,
-          headers: { "Content-Type": "application/json" },
-        },
-      )
-    }
+    const { messages } = await req.json()
 
     // Get the last user message for SQL injection detection
     const lastMessage = messages[messages.length - 1]

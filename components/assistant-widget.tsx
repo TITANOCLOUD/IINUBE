@@ -92,7 +92,7 @@ export function AssistantWidget() {
       return "Genial, estás en contacto. Si prefieres hablar directamente, ¡llámame!"
     }
 
-    return "Hola, soy Manuel Fraustro, Director Comercial LATAM de IINBUE. Estoy aquí para ayudarte con cualquier duda sobre nuestros servicios. ¿En qué puedo asistirte?"
+    return "Hola, soy Manuel Fraustro, Director Comercial LATAM de IINUBE. Estoy aquí para ayudarte con cualquier duda sobre nuestros servicios. ¿En qué puedo asistirte?"
   }
 
   if (isMinimized) {

@@ -40,7 +40,7 @@ export default function CalculadoraPage() {
     return billingPeriod === "yearly" ? baseCost * 12 * 0.85 : baseCost
   }
 
-  const calculateIINBUE = () => {
+  const calculateIINUBE = () => {
     const baseCost = cpu * 12 + ram * 2.2 + storage * 0.05 + bandwidth * 0.01
     return billingPeriod === "yearly" ? baseCost * 12 * 0.8 : baseCost
   }
@@ -50,7 +50,7 @@ export default function CalculadoraPage() {
   const googlePrice = calculateGoogleCloud()
   const alibabaPrice = calculateAlibabaCloud()
   const ovhPrice = calculateOVH()
-  const iinbuePrice = calculateIINBUE()
+  const iinubePrice = calculateIINUBE()
 
   const prices = [
     {
@@ -104,8 +104,8 @@ export default function CalculadoraPage() {
       scalability: 7,
     },
     {
-      name: "IINBUE",
-      price: iinbuePrice,
+      name: "IINUBE",
+      price: iinubePrice,
       color: "from-cyan-500 to-blue-600",
       logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Proyecto%20nuevo%287%29-c5ju7W0kTgfZpfCjboqjvAnuIWpD7k.png",
       bandwidthCost: 0.01,
@@ -157,12 +157,12 @@ export default function CalculadoraPage() {
           Compara precios entre los principales proveedores de cloud del mundo
         </p>
         <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-          Configura las especificaciones de tu servidor y descubre cuánto puedes ahorrar con IINBUE Cloud
+          Configura las especificaciones de tu servidor y descubre cuánto puedes ahorrar con IINUBE Cloud
         </p>
       </section>
 
       <section className="container mx-auto px-4 pb-12">
-        <Card className="bg-gradient-to-br from-cyan-900/20 via-slate-900 to-slate-900 border-cyan-500/30">
+        <Card className="bg-gradient-to-br from-cyan-900/20 via-slate-900 to-slate-950 border-cyan-500/30">
           <CardHeader>
             <CardTitle className="text-2xl text-white flex items-center gap-2">
               <Zap className="w-6 h-6 text-cyan-400" />
@@ -174,7 +174,7 @@ export default function CalculadoraPage() {
               Nuestra calculadora inteligente compara en tiempo real los costos de infraestructura cloud entre los
               principales proveedores del mercado:{" "}
               <span className="text-cyan-400 font-semibold">
-                AWS, Azure, Google Cloud, Alibaba Cloud, OVHcloud e IINBUE Cloud
+                AWS, Azure, Google Cloud, Alibaba Cloud, OVHcloud e IINUBE Cloud
               </span>
               .
             </p>
@@ -334,7 +334,7 @@ export default function CalculadoraPage() {
 
           {/* Results Panel */}
           <div className="space-y-6">
-            <Card className="bg-gradient-to-br from-green-900/30 via-slate-900 to-slate-900 border-green-500/50">
+            <Card className="bg-gradient-to-br from-green-900/30 via-slate-900 to-slate-950 border-green-500/50">
               <CardHeader>
                 <CardTitle className="text-2xl text-white flex items-center gap-2">
                   <Award className="w-7 h-7 text-green-400" />
@@ -559,7 +559,7 @@ export default function CalculadoraPage() {
       <section className="container mx-auto px-4 py-16">
         <Card className="bg-slate-900 border-slate-800">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl text-white mb-4">¿Por qué IINBUE es más económico?</CardTitle>
+            <CardTitle className="text-3xl text-white mb-4">¿Por qué IINUBE es más económico?</CardTitle>
             <CardDescription className="text-slate-400 text-lg">
               Optimización de costos sin sacrificar calidad
             </CardDescription>
@@ -594,7 +594,7 @@ export default function CalculadoraPage() {
 
       {/* Special Offer Contact CTA Section */}
       <section className="container mx-auto px-4 py-16">
-        <Card className="bg-gradient-to-br from-cyan-900/30 via-blue-900/20 to-slate-900 border-cyan-500/50">
+        <Card className="bg-gradient-to-br from-cyan-900/30 via-blue-900/20 to-slate-950 border-cyan-500/50">
           <CardContent className="p-8 md:p-12">
             <div className="text-center max-w-3xl mx-auto">
               <div className="inline-flex items-center justify-center w-16 h-16 bg-cyan-500/20 rounded-full mb-6">

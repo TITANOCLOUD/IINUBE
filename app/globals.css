@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated to IINBUE brand colors - cyan #00c4cc, black, white */
+  /* Updated to IINUBE brand colors - cyan #00c4cc, black, white */
   --background: oklch(1 0 0); /* white */
   --foreground: oklch(0 0 0); /* black */
   --card: oklch(1 0 0);
@@ -12,7 +12,7 @@
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0 0 0);
 
-  /* Primary color: IINBUE cyan #00c4cc */
+  /* Primary color: IINUBE cyan #00c4cc */
   --primary: oklch(0.742 0.108 199.2); /* cyan #00c4cc */
   --primary-foreground: oklch(0 0 0); /* black text on cyan */
 
@@ -48,7 +48,7 @@
 }
 
 .dark {
-  /* Dark theme with IINBUE colors - black backgrounds with cyan accents */
+  /* Dark theme with IINUBE colors - black backgrounds with cyan accents */
   --background: oklch(0.05 0 0); /* deep black */
   --foreground: oklch(0.98 0 0); /* white text */
   --card: oklch(0.08 0 0); /* dark card */
@@ -56,7 +56,7 @@
   --popover: oklch(0.08 0 0);
   --popover-foreground: oklch(0.98 0 0);
 
-  /* Primary: IINBUE cyan for dark mode */
+  /* Primary: IINUBE cyan for dark mode */
   --primary: oklch(0.742 0.108 199.2); /* cyan #00c4cc */
   --primary-foreground: oklch(0 0 0); /* black on cyan */
 

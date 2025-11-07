@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Activity, Download, Upload, Wifi, MapPin, Globe, Share2, RotateCcw } from "lucide-react"
-import Image from "next/image"
+import { Logo } from "@/components/logo"
 
 export default function SpeedTestPage() {
   const [isTesting, setIsTesting] = useState(false)
@@ -147,13 +147,7 @@ export default function SpeedTestPage() {
                     <p className="text-white">{userLocation || "Detectando..."}</p>
                   </div>
                   <div className="pt-4 border-t border-slate-800">
-                    <Image
-                      src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-k21IITkCmVDgyEhscyDWx9TlrI6ovP.png"
-                      alt="TITANO CLOUD"
-                      width={120}
-                      height={40}
-                      className="opacity-80"
-                    />
+                    <Logo className="w-28 h-auto opacity-80" />
                   </div>
                 </CardContent>
               </Card>
@@ -274,7 +268,7 @@ export default function SpeedTestPage() {
                     <div className="inline-flex items-center gap-3 bg-slate-950 border border-cyan-500/30 rounded-lg px-6 py-3">
                       <MapPin className="w-5 h-5 text-cyan-400" />
                       <span className="text-white font-semibold">
-                        {selectedServerData.flag} {selectedServerData.name} - {selectedServerData.speed} - TITANO CLOUD
+                        {selectedServerData.flag} {selectedServerData.name} - {selectedServerData.speed} - IINUBE
                       </span>
                     </div>
                   </div>
@@ -320,7 +314,7 @@ export default function SpeedTestPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <div className="h-24 bg-slate-950 rounded-lg p-2 relative overflow-hidden">
+                    <div className="h-24 bg-slate-900 rounded-lg p-2 relative overflow-hidden">
                       {testComplete && (
                         <div
                           className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-cyan-500 to-cyan-400"
@@ -350,7 +344,7 @@ export default function SpeedTestPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <div className="h-24 bg-slate-950 rounded-lg p-2 relative overflow-hidden">
+                    <div className="h-24 bg-slate-900 rounded-lg p-2 relative overflow-hidden">
                       {testComplete && (
                         <div
                           className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-blue-500 to-blue-400"
@@ -380,7 +374,7 @@ export default function SpeedTestPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
-                    <div className="h-24 bg-slate-950 rounded-lg p-2 flex items-end gap-1">
+                    <div className="h-24 bg-slate-900 rounded-lg p-2 flex items-end gap-1">
                       {testComplete &&
                         Array.from({ length: 20 }).map((_, i) => (
                           <div

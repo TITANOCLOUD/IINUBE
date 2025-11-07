@@ -328,7 +328,7 @@ export default function Home() {
                 negocio.
               </p>
               <p className="text-xl font-semibold text-white">
-                Si no tienes uno, aquí te presentamos a <span className="text-cyan-400">Aníbal de IINBUE</span>. Puedes
+                Si no tienes uno, aquí te presentamos a <span className="text-cyan-400">Aníbal de IINUBE</span>. Puedes
                 usarlo desde que expliques todo a detalle.
               </p>
             </div>

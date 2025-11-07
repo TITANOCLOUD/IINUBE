@@ -335,69 +335,67 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-y-auto">
-      <Card className="bg-slate-900 border-slate-800 max-w-2xl w-full my-8">
-        <CardHeader className="border-b border-slate-800 pb-4">
+    <div className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-3">
+      <Card className="bg-slate-900 border-slate-800 max-w-xl w-full max-h-[90vh] flex flex-col">
+        <CardHeader className="border-b border-slate-800 py-3 px-4 flex-shrink-0">
           <div className="flex items-center justify-between">
             <div>
-              <CardTitle className="text-xl text-white">Configurar {plan.name}</CardTitle>
-              <CardDescription className="text-slate-400 text-sm">{plan.subtitle}</CardDescription>
+              <CardTitle className="text-lg text-white">{plan.name}</CardTitle>
+              <CardDescription className="text-slate-400 text-xs">{plan.subtitle}</CardDescription>
             </div>
-            <Button variant="ghost" size="icon" onClick={onClose} className="text-slate-400 hover:text-white">
-              <X className="w-5 h-5" />
+            <Button variant="ghost" size="icon" onClick={onClose} className="text-slate-400 hover:text-white h-8 w-8">
+              <X className="w-4 h-4" />
             </Button>
           </div>
         </CardHeader>
 
-        <CardContent className="space-y-6 pt-4">
+        <CardContent className="space-y-4 p-4 overflow-y-auto flex-1">
           {/* Plan Base */}
-          <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-500/30 rounded-lg p-4">
-            <h3 className="text-white font-bold text-base mb-3">Plan Base</h3>
-            <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-500/30 rounded-lg p-3">
+            <h3 className="text-white font-semibold text-sm mb-2">Plan Base</h3>
+            <div className="grid grid-cols-2 gap-2 text-xs">
               <div>
-                <p className="text-slate-400 text-xs">RAM DDR5:</p>
+                <p className="text-slate-400">RAM DDR5:</p>
                 <p className="text-white font-semibold">{plan.ram}GB</p>
               </div>
               <div>
-                <p className="text-slate-400 text-xs">CPU:</p>
-                <p className="text-white font-semibold text-xs">
-                  {plan.cpu}v {plan.processor}
-                </p>
+                <p className="text-slate-400">CPU:</p>
+                <p className="text-white font-semibold">{plan.cpu}v</p>
               </div>
               <div>
-                <p className="text-slate-400 text-xs">Almacenamiento:</p>
+                <p className="text-slate-400">Almacenamiento:</p>
                 <p className="text-white font-semibold">{plan.storage}GB SSD</p>
               </div>
               <div>
-                <p className="text-slate-400 text-xs">Precio Base:</p>
-                <p className="text-cyan-400 font-bold text-lg">${plan.price.toLocaleString()} MXN</p>
+                <p className="text-slate-400">Precio Base:</p>
+                <p className="text-cyan-400 font-bold text-base">${plan.price.toLocaleString()}</p>
               </div>
             </div>
           </div>
 
           {/* Upgrades */}
           <div>
-            <h3 className="text-white font-bold text-base mb-3">⬆️ Upgrades</h3>
-            <div className="grid gap-3">
+            <h3 className="text-white font-semibold text-sm mb-2">⬆️ Upgrades</h3>
+            <div className="grid gap-2">
               {/* Storage Upgrade */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-4 pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Disco Duro SSD</p>
-                      <p className="text-slate-400 text-xs">+50GB - $250 MXN c/u</p>
-                      <p className="text-cyan-400 text-xs mt-1">Total: {plan.storage + extraStorage * 50}GB</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Disco Duro SSD</p>
+                      <p className="text-slate-400 text-xs">+50GB - $250</p>
+                      <p className="text-cyan-400 text-xs">Total: {plan.storage + extraStorage * 50}GB</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setExtraStorage(Math.max(0, extraStorage - 1))}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="text-white w-6 text-center text-sm">{extraStorage}</span>
+                      <span className="text-white w-5 text-center text-xs">{extraStorage}</span>
                       <Button
                         size="sm"
                         variant="outline"
@@ -407,7 +405,7 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                             setExtraStorage(extraStorage + 1)
                           }
                         }}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                         disabled={plan.storage + (extraStorage + 1) * 50 > getMaxStorage()}
                       >
                         <Plus className="w-3 h-3" />
@@ -419,23 +417,23 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
 
               {/* CPU Upgrade */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-4 pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">CPU</p>
-                      <p className="text-slate-400 text-xs">+2v núcleos - $200 MXN c/u</p>
-                      <p className="text-cyan-400 text-xs mt-1">Total: {plan.cpu + extraCPU * 2}v</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">CPU</p>
+                      <p className="text-slate-400 text-xs">+2v - $200</p>
+                      <p className="text-cyan-400 text-xs">Total: {plan.cpu + extraCPU * 2}v</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setExtraCPU(Math.max(0, extraCPU - 1))}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="text-white w-6 text-center text-sm">{extraCPU}</span>
+                      <span className="text-white w-5 text-center text-xs">{extraCPU}</span>
                       <Button
                         size="sm"
                         variant="outline"
@@ -445,7 +443,7 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                             setExtraCPU(extraCPU + 1)
                           }
                         }}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                         disabled={plan.cpu + (extraCPU + 1) * 2 > getMaxCPU()}
                       >
                         <Plus className="w-3 h-3" />
@@ -457,23 +455,23 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
 
               {/* RAM Upgrade */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-4 pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Memoria RAM DDR5</p>
-                      <p className="text-slate-400 text-xs">+2GB - $300 MXN c/u</p>
-                      <p className="text-cyan-400 text-xs mt-1">Total: {plan.ram + extraRAM * 2}GB</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Memoria RAM DDR5</p>
+                      <p className="text-slate-400 text-xs">+2GB - $300</p>
+                      <p className="text-cyan-400 text-xs">Total: {plan.ram + extraRAM * 2}GB</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setExtraRAM(Math.max(0, extraRAM - 1))}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="text-white w-6 text-center text-sm">{extraRAM}</span>
+                      <span className="text-white w-5 text-center text-xs">{extraRAM}</span>
                       <Button
                         size="sm"
                         variant="outline"
@@ -483,7 +481,7 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                             setExtraRAM(extraRAM + 1)
                           }
                         }}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                         disabled={plan.ram + (extraRAM + 1) * 2 > getMaxRAM()}
                       >
                         <Plus className="w-3 h-3" />
@@ -495,28 +493,28 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
 
               {/* Bandwidth Upgrade */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-4 pb-4">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Ancho de Banda</p>
-                      <p className="text-slate-400 text-xs">+1 Gbps - $500 MXN c/u</p>
-                      <p className="text-cyan-400 text-xs mt-1">Base: 2 Gbps + {extraBandwidth} Gbps</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Ancho de Banda</p>
+                      <p className="text-slate-400 text-xs">+1 Gbps - $500</p>
+                      <p className="text-cyan-400 text-xs">Base: 2 Gbps + {extraBandwidth}</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setExtraBandwidth(Math.max(0, extraBandwidth - 1))}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="text-white w-6 text-center text-sm">{extraBandwidth}</span>
+                      <span className="text-white w-5 text-center text-xs">{extraBandwidth}</span>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setExtraBandwidth(extraBandwidth + 1)}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Plus className="w-3 h-3" />
                       </Button>
@@ -529,31 +527,31 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
 
           {/* Complements */}
           <div>
-            <h3 className="text-white font-bold text-base mb-3">📦 Complementos</h3>
+            <h3 className="text-white font-semibold text-sm mb-2">📦 Complementos</h3>
             <div className="grid gap-2">
-              {/* TSPlus Users - Counter */}
+              {/* TSPlus Users */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-3 pb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Usuarios TSPlus</p>
-                      <p className="text-cyan-400 text-xs">${complementsPricing.tsPlusUser} MXN c/u</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Usuarios TSPlus</p>
+                      <p className="text-cyan-400 text-xs">${complementsPricing.tsPlusUser}/u</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setTsPlusUsers(Math.max(0, tsPlusUsers - 1))}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="text-white w-6 text-center text-sm">{tsPlusUsers}</span>
+                      <span className="text-white w-5 text-center text-xs">{tsPlusUsers}</span>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setTsPlusUsers(tsPlusUsers + 1)}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Plus className="w-3 h-3" />
                       </Button>
@@ -562,42 +560,44 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                 </CardContent>
               </Card>
 
+              {/* Office LTSC */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-3 pb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Office LTSC 2024</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Office LTSC 2024</p>
                       <p className="text-slate-400 text-xs">Licencia perpetua</p>
-                      <p className="text-cyan-400 text-xs">${complementsPricing.officeLTSC.toLocaleString()} MXN</p>
+                      <p className="text-cyan-400 text-xs">${complementsPricing.officeLTSC.toLocaleString()}</p>
                     </div>
                     <Checkbox checked={hasOfficeLTSC} onCheckedChange={(checked) => setHasOfficeLTSC(!!checked)} />
                   </div>
                 </CardContent>
               </Card>
 
+              {/* Office 365 */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-3 pb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Microsoft 365 Business</p>
-                      <p className="text-slate-400 text-xs">Suscripción mensual por usuario</p>
-                      <p className="text-cyan-400 text-xs">${complementsPricing.office365} MXN/usuario/mes</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Office 365 Business</p>
+                      <p className="text-slate-400 text-xs">Mensual por usuario</p>
+                      <p className="text-cyan-400 text-xs">${complementsPricing.office365}/u/mes</p>
                     </div>
-                    <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-1">
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setOffice365Users(Math.max(0, office365Users - 1))}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
-                      <span className="text-white w-6 text-center text-sm">{office365Users}</span>
+                      <span className="text-white w-5 text-center text-xs">{office365Users}</span>
                       <Button
                         size="sm"
                         variant="outline"
                         onClick={() => setOffice365Users(office365Users + 1)}
-                        className="border-slate-600 h-7 w-7 p-0"
+                        className="h-6 w-6 p-0"
                       >
                         <Plus className="w-3 h-3" />
                       </Button>
@@ -606,42 +606,42 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                 </CardContent>
               </Card>
 
-              {/* Antivirus - Radio button */}
+              {/* Antivirus */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-3 pb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">ESET Antivirus</p>
-                      <p className="text-slate-400 text-xs">Licencia anual para 1 máquina</p>
-                      <p className="text-cyan-400 text-xs">${complementsPricing.antivirus.toLocaleString()} MXN/año</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">ESET Antivirus</p>
+                      <p className="text-slate-400 text-xs">Anual por máquina</p>
+                      <p className="text-cyan-400 text-xs">${complementsPricing.antivirus.toLocaleString()}/año</p>
                     </div>
                     <Checkbox checked={hasAntivirus} onCheckedChange={(checked) => setHasAntivirus(!!checked)} />
                   </div>
                 </CardContent>
               </Card>
 
-              {/* Backups - Radio button */}
+              {/* Backups */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-3 pb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">Respaldos Automatizados</p>
-                      <p className="text-slate-400 text-xs">Licencia anual para 1 máquina (7 Snapshots)</p>
-                      <p className="text-cyan-400 text-xs">${complementsPricing.backups.toLocaleString()} MXN/año</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">Respaldos</p>
+                      <p className="text-slate-400 text-xs">Anual (7 Snapshots)</p>
+                      <p className="text-cyan-400 text-xs">${complementsPricing.backups.toLocaleString()}/año</p>
                     </div>
                     <Checkbox checked={hasBackups} onCheckedChange={(checked) => setHasBackups(!!checked)} />
                   </div>
                 </CardContent>
               </Card>
 
-              {/* TSPlus Security - Radio button */}
+              {/* TSPlus Security */}
               <Card className="bg-slate-800 border-slate-700">
-                <CardContent className="pt-3 pb-3">
-                  <div className="flex items-center justify-between">
-                    <div className="flex-1">
-                      <p className="text-white font-semibold text-sm">TSPlus Advanced Security</p>
-                      <p className="text-slate-400 text-xs">Licencia perpetua (actualización anual 21%)</p>
-                      <p className="text-cyan-400 text-xs">${complementsPricing.tsPlusSecurity.toLocaleString()} MXN</p>
+                <CardContent className="p-3">
+                  <div className="flex items-center justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <p className="text-white font-medium text-xs">TSPlus Security</p>
+                      <p className="text-slate-400 text-xs">Perpetua (21% anual)</p>
+                      <p className="text-cyan-400 text-xs">${complementsPricing.tsPlusSecurity.toLocaleString()}</p>
                     </div>
                     <Checkbox
                       checked={hasTsPlusSecurity}
@@ -655,8 +655,8 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
 
           {/* User Information */}
           <div>
-            <h3 className="text-white font-bold text-base mb-3">👤 Tus Datos</h3>
-            <div className="grid grid-cols-2 gap-3">
+            <h3 className="text-white font-semibold text-sm mb-2">👤 Tus Datos</h3>
+            <div className="grid grid-cols-2 gap-2">
               <div>
                 <Label htmlFor="name" className="text-slate-300 text-xs">
                   Nombre *
@@ -666,7 +666,7 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                   value={userName}
                   onChange={(e) => setUserName(e.target.value)}
                   placeholder="Tu nombre"
-                  className="bg-slate-800 border-slate-700 text-white mt-1 h-9 text-sm"
+                  className="bg-slate-800 border-slate-700 text-white mt-1 h-8 text-xs"
                 />
               </div>
               <div>
@@ -678,7 +678,7 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                   value={userCompany}
                   onChange={(e) => setUserCompany(e.target.value)}
                   placeholder="Empresa"
-                  className="bg-slate-800 border-slate-700 text-white mt-1 h-9 text-sm"
+                  className="bg-slate-800 border-slate-700 text-white mt-1 h-8 text-xs"
                 />
               </div>
               <div>
@@ -691,7 +691,7 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                   value={userEmail}
                   onChange={(e) => setUserEmail(e.target.value)}
                   placeholder="tu@email.com"
-                  className="bg-slate-800 border-slate-700 text-white mt-1 h-9 text-sm"
+                  className="bg-slate-800 border-slate-700 text-white mt-1 h-8 text-xs"
                 />
               </div>
               <div>
@@ -704,41 +704,38 @@ export function VPSConfigurator({ plan, onClose }: VPSConfiguratorProps) {
                   value={userPhone}
                   onChange={(e) => setUserPhone(e.target.value)}
                   placeholder="+52 33 1234 5678"
-                  className="bg-slate-800 border-slate-700 text-white mt-1 h-9 text-sm"
+                  className="bg-slate-800 border-slate-700 text-white mt-1 h-8 text-xs"
                 />
               </div>
             </div>
 
             {/* Urgency checkbox */}
-            <div className="mt-3 flex items-center space-x-2 p-3 bg-red-500/10 border border-red-500/30 rounded-lg">
+            <div className="mt-2 flex items-center space-x-2 p-2 bg-red-500/10 border border-red-500/30 rounded">
               <Checkbox id="urgent" checked={isUrgent} onCheckedChange={(checked) => setIsUrgent(!!checked)} />
-              <label
-                htmlFor="urgent"
-                className="text-xs font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 text-white flex items-center gap-2"
-              >
-                <AlertCircle className="w-4 h-4 text-red-500" />
+              <label htmlFor="urgent" className="text-xs font-medium text-white flex items-center gap-1">
+                <AlertCircle className="w-3 h-3 text-red-500" />
                 Cliente con urgencia
               </label>
             </div>
           </div>
 
           {/* Total */}
-          <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border-2 border-cyan-500/50 rounded-lg p-4">
-            <div className="flex items-center justify-between mb-2">
-              <span className="text-white text-base font-semibold">Total Mensual:</span>
-              <span className="text-3xl font-bold text-cyan-400">${calculateTotal().toLocaleString()}</span>
+          <div className="bg-gradient-to-br from-cyan-500/20 to-blue-600/20 border-2 border-cyan-500/50 rounded-lg p-3">
+            <div className="flex items-center justify-between">
+              <span className="text-white text-sm font-semibold">Total Mensual:</span>
+              <span className="text-2xl font-bold text-cyan-400">${calculateTotal().toLocaleString()}</span>
             </div>
-            <p className="text-slate-300 text-xs">+ IVA (16%) • Precios en MXN</p>
+            <p className="text-slate-300 text-xs mt-1">+ IVA (16%) • Precios en MXN</p>
           </div>
         </CardContent>
 
-        <CardFooter className="border-t border-slate-800 flex gap-3 py-3">
-          <Button onClick={sendToWhatsApp} className="flex-1 bg-green-600 hover:bg-green-700 text-white h-9 text-sm">
-            <MessageCircle className="w-4 h-4 mr-2" />
+        <CardFooter className="border-t border-slate-800 flex gap-2 p-3 flex-shrink-0">
+          <Button onClick={sendToWhatsApp} className="flex-1 bg-green-600 hover:bg-green-700 text-white h-9 text-xs">
+            <MessageCircle className="w-4 h-4 mr-1" />
             WhatsApp
           </Button>
-          <Button onClick={sendToEmail} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-9 text-sm">
-            <Mail className="w-4 h-4 mr-2" />
+          <Button onClick={sendToEmail} className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-9 text-xs">
+            <Mail className="w-4 h-4 mr-1" />
             Email
           </Button>
         </CardFooter>
