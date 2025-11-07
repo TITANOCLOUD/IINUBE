@@ -116,6 +116,9 @@ importers:
       embla-carousel-react:
         specifier: latest
         version: 8.6.0(react@19.2.0)
+      fs:
+        specifier: latest
+        version: 0.0.1-security
       input-otp:
         specifier: latest
         version: 1.4.2(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
@@ -1436,6 +1439,9 @@ packages:
 
   fraction.js@4.3.7:
     resolution: {integrity: sha512-ZsDfxO51wGAXREY55a7la9LScWpwv9RxIrYABrlvOFBlH/ShPnrtsXeuUIfXKKOVicNxQ+o8JTbJvjS4M89yew==}
+
+  fs@0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
 
   get-nonce@1.0.1:
     resolution: {integrity: sha512-FJhYRoDaiatfEkUK8HKlicmu/3SGFD51q3itKDGoSTysQJBnfOcxU5GxnhE1E6soB76MbT0MBtnKJuXyAx+96Q==}
@@ -2977,6 +2983,8 @@ snapshots:
   eventsource-parser@3.0.6: {}
 
   fraction.js@4.3.7: {}
+
+  fs@0.0.1-security: {}
 
   get-nonce@1.0.1: {}
 
