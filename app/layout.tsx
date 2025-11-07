@@ -11,10 +11,10 @@ const _geist = Geist({ subsets: ["latin"] })
 const _geistMono = Geist_Mono({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "IINBUE | Infraestructura Cloud de Alto Rendimiento",
+  title: "IINUBE CLOUD - TIENDA DE VPS CLOUD",
   description:
-    "IINBUE ofrece infraestructura cloud de alto rendimiento que combina potencia, estabilidad y flexibilidad para entornos empresariales modernos. VPS, Bare Metal, Kubernetes y más.",
-  generator: "IINBUE",
+    "IINUBE CLOUD ofrece VPS, Bare Metal, Kubernetes y hosting cloud en México. Precios en pesos mexicanos, soporte 24/7 en español.",
+  generator: "IINUBE",
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
@@ -26,23 +26,25 @@ export const metadata: Metadata = {
     "bare metal",
     "kubernetes",
     "infraestructura",
-    "hosting",
+    "hosting México",
     "servidores dedicados",
-    "iinbue",
-    "IINBUE",
+    "VPS México",
+    "hosting en pesos",
+    "iinube",
+    "IINUBE",
   ],
-  authors: [{ name: "IINBUE" }],
+  authors: [{ name: "IINUBE" }],
   openGraph: {
-    title: "IINBUE Cloud Infrastructure",
-    description: "Infraestructura cloud de alto rendimiento para entornos empresariales modernos",
+    title: "IINUBE CLOUD - TIENDA DE VPS CLOUD",
+    description: "VPS, Bare Metal y Kubernetes en México. Precios en pesos mexicanos.",
     type: "website",
     locale: "es_MX",
-    siteName: "IINBUE",
+    siteName: "IINUBE",
   },
   twitter: {
     card: "summary_large_image",
-    title: "IINBUE Cloud Infrastructure",
-    description: "Infraestructura cloud de alto rendimiento para entornos empresariales modernos",
+    title: "IINUBE CLOUD - TIENDA DE VPS CLOUD",
+    description: "VPS, Bare Metal y Kubernetes en México. Precios en pesos mexicanos.",
   },
 }
 

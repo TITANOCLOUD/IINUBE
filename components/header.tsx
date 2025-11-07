@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { ChevronDown, Globe, Menu, X } from "lucide-react"
 
 export function Header() {
-  const [currency, setCurrency] = useState("USD")
+  const [currency, setCurrency] = useState("MXN")
   const [language, setLanguage] = useState("ES")
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -91,22 +91,22 @@ export function Header() {
             </button>
             <div className="absolute right-0 mt-2 w-32 bg-black border border-slate-800 rounded-lg shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
               <button
-                onClick={() => setCurrency("USD")}
+                onClick={() => setCurrency("MXN")}
                 className="w-full px-4 py-2 text-left text-white hover:bg-slate-900 hover:text-[#00c4cc] transition-colors first:rounded-t-lg"
+              >
+                MXN $
+              </button>
+              <button
+                onClick={() => setCurrency("USD")}
+                className="w-full px-4 py-2 text-left text-white hover:bg-slate-900 hover:text-[#00c4cc] transition-colors"
               >
                 USD $
               </button>
               <button
                 onClick={() => setCurrency("EUR")}
-                className="w-full px-4 py-2 text-left text-white hover:bg-slate-900 hover:text-[#00c4cc] transition-colors"
-              >
-                EUR €
-              </button>
-              <button
-                onClick={() => setCurrency("MXN")}
                 className="w-full px-4 py-2 text-left text-white hover:bg-slate-900 hover:text-[#00c4cc] transition-colors last:rounded-b-lg"
               >
-                MXN $
+                EUR €
               </button>
             </div>
           </div>

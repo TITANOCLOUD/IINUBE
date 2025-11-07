@@ -48,7 +48,7 @@ export default function VPSPage() {
       ram: 8,
       storage: 100,
       bandwidth: "400 Mbit/s",
-      price: 4.2,
+      price: 84,
       setupFee: "Gratis",
       maxCpu: 8,
       maxRam: 16,
@@ -62,7 +62,7 @@ export default function VPSPage() {
       ram: 12,
       storage: 150,
       bandwidth: "1 Gb/s",
-      price: 6.75,
+      price: 135,
       setupFee: "Gratis",
       maxCpu: 12,
       maxRam: 24,
@@ -76,7 +76,7 @@ export default function VPSPage() {
       ram: 24,
       storage: 200,
       bandwidth: "1.5 Gb/s",
-      price: 12.75,
+      price: 255,
       setupFee: "Gratis",
       recommended: true,
       maxCpu: 16,
@@ -91,7 +91,7 @@ export default function VPSPage() {
       ram: 48,
       storage: 300,
       bandwidth: "2 Gb/s",
-      price: 22.08,
+      price: 442,
       setupFee: "Gratis",
       maxCpu: 20,
       maxRam: 64,
@@ -105,7 +105,7 @@ export default function VPSPage() {
       ram: 64,
       storage: 350,
       bandwidth: "2.5 Gb/s",
-      price: 34.34,
+      price: 687,
       setupFee: "Gratis",
       maxCpu: 24,
       maxRam: 96,
@@ -119,7 +119,7 @@ export default function VPSPage() {
       ram: 96,
       storage: 400,
       bandwidth: "3 Gb/s",
-      price: 45.39,
+      price: 908,
       setupFee: "Gratis",
       maxCpu: 32,
       maxRam: 128,
@@ -274,7 +274,7 @@ export default function VPSPage() {
     {
       question: "¿Cuánto cuesta un servidor VPS?",
       answer:
-        "El precio de un VPS depende de varios factores: cantidad de CPU, memoria RAM, almacenamiento y ancho de banda. Nuestros planes comienzan desde $4.20/mes para proyectos pequeños hasta $45.39/mes para aplicaciones de alto rendimiento. Los factores que influyen en el precio incluyen el tipo de almacenamiento (SSD NVMe es más rápido), la cantidad de RAM necesaria para tus aplicaciones, y el ancho de banda requerido.",
+        "El precio de un VPS depende de varios factores: cantidad de CPU, memoria RAM, almacenamiento y ancho de banda. Nuestros planes comienzan desde $84 MXN/mes para proyectos pequeños hasta $908 MXN/mes para aplicaciones de alto rendimiento. Los factores que influyen en el precio incluyen el tipo de almacenamiento (SSD NVMe es más rápido), la cantidad de RAM necesaria para tus aplicaciones, y el ancho de banda requerido.",
     },
     {
       question: "¿Qué sistemas operativos están disponibles?",
@@ -294,9 +294,9 @@ export default function VPSPage() {
   ]
 
   const calculateCustomPrice = () => {
-    const baseCpuPrice = 1.5
-    const baseRamPrice = 2
-    const baseStoragePrice = 0.15
+    const baseCpuPrice = 30
+    const baseRamPrice = 40
+    const baseStoragePrice = 3
     return (configCpu * baseCpuPrice + configRam * baseRamPrice + configStorage * baseStoragePrice).toFixed(2)
   }
 
@@ -642,7 +642,7 @@ export default function VPSPage() {
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-sm text-slate-400">Desde</span>
                   <span className="text-3xl font-bold text-white">${plan.price.toFixed(2)}</span>
-                  <span className="text-slate-400">/mes</span>
+                  <span className="text-slate-400">MXN/mes</span>
                 </div>
                 <p className="text-sm text-slate-500">Gastos de instalación: {plan.setupFee}</p>
               </CardHeader>

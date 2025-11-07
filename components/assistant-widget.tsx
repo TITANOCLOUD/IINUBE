@@ -46,7 +46,7 @@ export function AssistantWidget() {
 
   const getContextualMessage = () => {
     if (isAuthenticated) {
-      return `Hola ${userName}, soy Aníbal Hernández, tu Gerente de Infraestructura y Ciberseguridad. Estoy aquí para ayudarte con lo que necesites. ¿En qué puedo asistirte hoy?`
+      return `Hola ${userName}, soy Manuel Fraustro, tu Director Comercial para LATAM. Estoy aquí para ayudarte con lo que necesites. ¿En qué puedo asistirte hoy?`
     }
 
     if (pathname?.includes("bare-metal")) {
@@ -65,7 +65,7 @@ export function AssistantWidget() {
       return "Genial, estás en contacto. Si prefieres hablar directamente, ¡llámame!"
     }
 
-    return "Hola, soy Aníbal Hernández, Gerente de Infraestructura y Ciberseguridad de IINBUE. Estoy aquí para ayudarte con cualquier duda sobre nuestros servicios. ¿En qué puedo asistirte?"
+    return "Hola, soy Manuel Fraustro, Director Comercial para LATAM de IINBUE. Estoy aquí para ayudarte con cualquier duda sobre nuestros servicios. ¿En qué puedo asistirte?"
   }
 
   if (isMinimized) {
@@ -73,12 +73,12 @@ export function AssistantWidget() {
       <button
         onClick={() => setIsMinimized(false)}
         className="fixed bottom-6 right-6 z-50 group"
-        aria-label="Abrir asistente Aníbal Hernández"
+        aria-label="Abrir asistente Manuel Fraustro"
       >
         <div className="relative">
           <img
-            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nsb5fmKM2v1jR6Giq0R1GHbgwc3VxI.png"
-            alt="Aníbal Hernández - Gerente de Infraestructura y Ciberseguridad"
+            src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3RERQcvArHN0Mv7hr2U5eNVHny4WuE.png"
+            alt="Manuel Fraustro - Director Comercial para LATAM"
             className="w-16 h-16 rounded-full object-cover shadow-lg border-2 border-cyan-400 group-hover:border-cyan-300 transition-all"
           />
           <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
@@ -93,12 +93,12 @@ export function AssistantWidget() {
         <button
           onClick={() => setIsOpen(true)}
           className="fixed bottom-6 right-6 z-50 group"
-          aria-label="Abrir chat con Aníbal Hernández"
+          aria-label="Abrir chat con Manuel Fraustro"
         >
           <div className="relative">
             <img
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nsb5fmKM2v1jR6Giq0R1GHbgwc3VxI.png"
-              alt="Aníbal Hernández - Gerente de Infraestructura"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3RERQcvArHN0Mv7hr2U5eNVHny4WuE.png"
+              alt="Manuel Fraustro - Director Comercial"
               className="w-16 h-16 rounded-full object-cover shadow-lg border-2 border-cyan-400 group-hover:border-cyan-300 transition-all group-hover:scale-110"
             />
             <div className="absolute -top-1 -right-1 w-4 h-4 bg-green-500 rounded-full border-2 border-white animate-pulse" />
@@ -112,16 +112,16 @@ export function AssistantWidget() {
             {/* Header */}
             <div className="flex items-start gap-3 mb-4">
               <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nsb5fmKM2v1jR6Giq0R1GHbgwc3VxI.png"
-                alt="Aníbal Hernández"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-3RERQcvArHN0Mv7hr2U5eNVHny4WuE.png"
+                alt="Manuel Fraustro"
                 className="w-14 h-14 rounded-full object-cover border-2 border-cyan-400 shadow-lg"
               />
               <div className="flex-1">
                 <div className="flex items-center gap-2">
-                  <h3 className="text-white font-semibold">Aníbal Hernández</h3>
+                  <h3 className="text-white font-semibold">Manuel Fraustro</h3>
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
                 </div>
-                <p className="text-xs text-gray-400">Gerente de Infraestructura</p>
+                <p className="text-xs text-gray-400">Director Comercial LATAM</p>
               </div>
               <div className="flex gap-1">
                 <Button

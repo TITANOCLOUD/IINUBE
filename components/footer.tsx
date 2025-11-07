@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { Logo } from "@/components/logo"
-import { Server, Globe, Mail, Phone, MapPin, Activity } from "lucide-react"
+import { Server, Globe, Mail, Phone, MapPin, Activity, Youtube, Facebook, Instagram } from "lucide-react"
 
 export function Footer() {
   return (
@@ -18,7 +18,7 @@ export function Footer() {
               <br />
               para entornos empresariales modernos.
             </p>
-            <div className="flex flex-col gap-2 text-sm text-slate-300">
+            <div className="flex flex-col gap-2 text-sm text-slate-300 mb-6">
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#00c4cc]" />
                 <span>Global Data Centers</span>
@@ -33,6 +33,36 @@ export function Footer() {
                 <Mail className="w-4 h-4 text-[#00c4cc]" />
                 <span>support@iinbue.com</span>
               </div>
+            </div>
+
+            <div className="flex gap-4">
+              <a
+                href="https://www.youtube.com/@servidoresvirtuales-nube"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-[#00c4cc] transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.facebook.com/servidoresvirtualesnube/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-[#00c4cc] transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.instagram.com/servidoresvirtualesnube/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-slate-300 hover:text-[#00c4cc] transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
             </div>
           </div>
 

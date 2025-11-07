@@ -330,8 +330,8 @@ export default function Home() {
             <div className="relative hidden md:block">
               <div className="relative aspect-square rounded-2xl overflow-hidden border-2 border-cyan-500/30 shadow-2xl sticky top-8">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-nsb5fmKM2v1jR6Giq0R1GHbgwc3VxI.png"
-                  alt="Aníbal Hernández - Arquitecto Cloud"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-J76NbjPkSjZHxJuRkxDF2jSbY2rouq.png"
+                  alt="Aníbal Hernández - Gerente de Infraestructura y Ciberseguridad"
                   fill
                   className="object-cover"
                 />
@@ -360,7 +360,7 @@ export default function Home() {
                   <CardTitle className="text-2xl md:text-3xl font-bold text-white">Aníbal AI Assistant</CardTitle>
                 </div>
                 <CardDescription className="text-slate-300 text-base">
-                  Gerente de Infraestructura y Ciberseguridad con IA • Consulta profesional gratuita
+                  Arquitecto Cloud con IA • Consulta profesional gratuita
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-5">
@@ -370,8 +370,8 @@ export default function Home() {
                     <div className="text-center py-8">
                       <Sparkles className="w-12 h-12 text-cyan-400 mx-auto mb-4 animate-pulse" />
                       <p className="text-slate-400">
-                        ¡Hola! Soy Aníbal Hernández, tu Gerente de Infraestructura y Ciberseguridad. Cuéntame sobre tu
-                        proyecto y te ayudaré a encontrar la mejor solución.
+                        ¡Hola! Soy Aníbal Hernández, tu Arquitecto Cloud. Cuéntame sobre tu proyecto y te ayudaré a
+                        diseñar la mejor infraestructura para tu negocio.
                       </p>
                     </div>
                   ) : (
@@ -548,9 +548,9 @@ export default function Home() {
               </div>
               <div className="pt-4 border-t border-slate-700">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-slate-500 line-through text-xl">$35</span>
-                  <span className="text-4xl font-bold text-orange-400">$21</span>
-                  <span className="text-slate-400">/mes</span>
+                  <span className="text-slate-500 line-through text-xl">$700 MXN</span>
+                  <span className="text-4xl font-bold text-orange-400">$420</span>
+                  <span className="text-slate-400">MXN/mes</span>
                 </div>
                 <p className="text-sm text-slate-500 mt-2">Precio especial por 12 meses</p>
               </div>
@@ -597,11 +597,11 @@ export default function Home() {
               </div>
               <div className="pt-4 border-t border-slate-700">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-slate-500 line-through text-xl">$102</span>
-                  <span className="text-4xl font-bold text-cyan-400">$71</span>
-                  <span className="text-slate-400">/mes</span>
+                  <span className="text-slate-500 line-through text-xl">$2,040 MXN</span>
+                  <span className="text-4xl font-bold text-cyan-400">$1,420</span>
+                  <span className="text-slate-400">MXN/mes</span>
                 </div>
-                <p className="text-sm text-slate-500 mt-2">Ahorra $31/mes durante 6 meses</p>
+                <p className="text-sm text-slate-500 mt-2">Ahorra $620 MXN/mes durante 6 meses</p>
               </div>
             </CardContent>
             <CardFooter>
@@ -646,9 +646,9 @@ export default function Home() {
               </div>
               <div className="pt-4 border-t border-slate-700">
                 <div className="flex items-baseline gap-2">
-                  <span className="text-slate-500 line-through text-xl">$250</span>
-                  <span className="text-4xl font-bold text-purple-400">$187</span>
-                  <span className="text-slate-400">/mes</span>
+                  <span className="text-slate-500 line-through text-xl">$5,000 MXN</span>
+                  <span className="text-4xl font-bold text-purple-400">$3,740</span>
+                  <span className="text-slate-400">MXN/mes</span>
                 </div>
                 <p className="text-sm text-slate-500 mt-2">Oferta válida por 3 meses</p>
               </div>
@@ -781,9 +781,9 @@ export default function Home() {
         </div>
         <div className="grid md:grid-cols-3 gap-6">
           {[
-            { name: "VPS Básico", cpu: "2 vCPU", ram: "4 GB RAM", storage: "80 GB SSD", price: "$15/mes" },
-            { name: "VPS Pro", cpu: "4 vCPU", ram: "8 GB RAM", storage: "160 GB SSD", price: "$35/mes" },
-            { name: "VPS Enterprise", cpu: "8 vCPU", ram: "16 GB RAM", storage: "320 GB SSD", price: "$70/mes" },
+            { name: "VPS Básico", cpu: "2 vCPU", ram: "4 GB RAM", storage: "80 GB SSD", price: "$300 MXN/mes" },
+            { name: "VPS Pro", cpu: "4 vCPU", ram: "8 GB RAM", storage: "160 GB SSD", price: "$700 MXN/mes" },
+            { name: "VPS Enterprise", cpu: "8 vCPU", ram: "16 GB RAM", storage: "320 GB SSD", price: "$1,400 MXN/mes" },
           ].map((plan) => (
             <Card key={plan.name} className="bg-slate-900 border-slate-800">
               <CardHeader>
@@ -844,7 +844,7 @@ export default function Home() {
                   <strong>Network:</strong> 1 Gbps ilimitado
                 </p>
               </div>
-              <p className="text-3xl font-bold text-white">$199/mes</p>
+              <p className="text-3xl font-bold text-white">$3,980 MXN/mes</p>
               <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Contratar</Button>
             </CardContent>
           </Card>
@@ -870,7 +870,7 @@ export default function Home() {
                   <strong>Network:</strong> 10 Gbps ilimitado
                 </p>
               </div>
-              <p className="text-3xl font-bold text-white">$599/mes</p>
+              <p className="text-3xl font-bold text-white">$11,980 MXN/mes</p>
               <Button className="w-full bg-cyan-500 hover:bg-cyan-600">Contratar</Button>
             </CardContent>
           </Card>
@@ -902,7 +902,7 @@ export default function Home() {
                   <Check className="w-4 h-4 text-cyan-400" /> Monitoreo 24/7
                 </li>
               </ul>
-              <p className="text-3xl font-bold text-white mt-6">$120/mes</p>
+              <p className="text-3xl font-bold text-white mt-6">$2,400 MXN/mes</p>
             </CardContent>
             <CardFooter>
               <Button className="w-full bg-gradient-to-r from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 text-white font-bold py-6">
@@ -928,7 +928,7 @@ export default function Home() {
                   <Check className="w-4 h-4 text-cyan-400" /> Backup automático
                 </li>
               </ul>
-              <p className="text-3xl font-bold text-white mt-6">$250/mes</p>
+              <p className="text-3xl font-bold text-white mt-6">$5,000 MXN/mes</p>
             </CardContent>
             <CardFooter>
               <Button className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white font-bold py-6">
@@ -954,7 +954,7 @@ export default function Home() {
                   <Check className="w-4 h-4 text-cyan-400" /> Soporte dedicado
                 </li>
               </ul>
-              <p className="text-3xl font-bold text-white mt-6">$500/mes</p>
+              <p className="text-3xl font-bold text-white mt-6">$10,000 MXN/mes</p>
             </CardContent>
             <CardFooter>
               <Button className="w-full bg-gradient-to-r from-purple-500 to-pink-600 hover:from-purple-600 hover:to-pink-700 text-white font-bold py-6">
@@ -983,10 +983,10 @@ export default function Home() {
         </div>
         <div className="grid md:grid-cols-4 gap-4 max-w-4xl mx-auto">
           {[
-            { tld: ".com", price: "$12.99/año" },
-            { tld: ".net", price: "$14.99/año" },
-            { tld: ".org", price: "$13.99/año" },
-            { tld: ".io", price: "$39.99/año" },
+            { tld: ".com", price: "$260 MXN/año" },
+            { tld: ".net", price: "$300 MXN/año" },
+            { tld: ".org", price: "$280 MXN/año" },
+            { tld: ".io", price: "$800 MXN/año" },
           ].map((domain) => (
             <Card key={domain.tld} className="bg-slate-900 border-slate-800 text-center">
               <CardHeader>
@@ -1051,7 +1051,7 @@ export default function Home() {
             <div className="group relative bg-slate-900 border border-slate-800 hover:border-cyan-500 rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="relative h-24 flex items-center justify-center">
                 <Image
-                  src="/ovh-logo.jpg"
+                  src="/ovhcloud-logo.jpg"
                   alt="OVHcloud Partner"
                   fill
                   className="object-contain filter brightness-90 group-hover:brightness-110 transition-all duration-300"
@@ -1068,7 +1068,7 @@ export default function Home() {
             <div className="group relative bg-slate-900 border border-slate-800 hover:border-cyan-500 rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="relative h-24 flex items-center justify-center">
                 <Image
-                  src="/aws-logo.jpg"
+                  src="/aws-amazon-web-services-logo.jpg"
                   alt="AWS Partner"
                   fill
                   className="object-contain filter brightness-90 group-hover:brightness-110 transition-all duration-300"
@@ -1085,7 +1085,7 @@ export default function Home() {
             <div className="group relative bg-slate-900 border border-slate-800 hover:border-cyan-500 rounded-2xl p-8 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/20">
               <div className="relative h-24 flex items-center justify-center">
                 <Image
-                  src="/azure-logo.jpg"
+                  src="/microsoft-azure-logo.jpg"
                   alt="Microsoft Azure Partner"
                   fill
                   className="object-contain filter brightness-90 group-hover:brightness-110 transition-all duration-300"
