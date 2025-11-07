@@ -40,7 +40,7 @@ export default function CalculadoraPage() {
     return billingPeriod === "yearly" ? baseCost * 12 * 0.85 : baseCost
   }
 
-  const calculateTitano = () => {
+  const calculateIINBUE = () => {
     const baseCost = cpu * 12 + ram * 2.2 + storage * 0.05 + bandwidth * 0.01
     return billingPeriod === "yearly" ? baseCost * 12 * 0.8 : baseCost
   }
@@ -50,7 +50,7 @@ export default function CalculadoraPage() {
   const googlePrice = calculateGoogleCloud()
   const alibabaPrice = calculateAlibabaCloud()
   const ovhPrice = calculateOVH()
-  const titanoPrice = calculateTitano()
+  const iinbuePrice = calculateIINBUE()
 
   const prices = [
     {
@@ -104,10 +104,10 @@ export default function CalculadoraPage() {
       scalability: 7,
     },
     {
-      name: "Titano Cloud",
-      price: titanoPrice,
+      name: "IINBUE",
+      price: iinbuePrice,
       color: "from-cyan-500 to-blue-600",
-      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-k21IITkCmVDgyEhscyDWx9TlrI6ovP.png",
+      logo: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Proyecto%20nuevo%287%29-c5ju7W0kTgfZpfCjboqjvAnuIWpD7k.png",
       bandwidthCost: 0.01,
       support: 10,
       performance: 9,
@@ -157,7 +157,7 @@ export default function CalculadoraPage() {
           Compara precios entre los principales proveedores de cloud del mundo
         </p>
         <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-          Configura las especificaciones de tu servidor y descubre cuánto puedes ahorrar con Titano Cloud
+          Configura las especificaciones de tu servidor y descubre cuánto puedes ahorrar con IINBUE Cloud
         </p>
       </section>
 
@@ -174,7 +174,7 @@ export default function CalculadoraPage() {
               Nuestra calculadora inteligente compara en tiempo real los costos de infraestructura cloud entre los
               principales proveedores del mercado:{" "}
               <span className="text-cyan-400 font-semibold">
-                AWS, Azure, Google Cloud, Alibaba Cloud, OVHcloud y Titano Cloud
+                AWS, Azure, Google Cloud, Alibaba Cloud, OVHcloud e IINBUE Cloud
               </span>
               .
             </p>
@@ -559,7 +559,7 @@ export default function CalculadoraPage() {
       <section className="container mx-auto px-4 py-16">
         <Card className="bg-slate-900 border-slate-800">
           <CardHeader className="text-center">
-            <CardTitle className="text-3xl text-white mb-4">¿Por qué Titano Cloud es más económico?</CardTitle>
+            <CardTitle className="text-3xl text-white mb-4">¿Por qué IINBUE es más económico?</CardTitle>
             <CardDescription className="text-slate-400 text-lg">
               Optimización de costos sin sacrificar calidad
             </CardDescription>
