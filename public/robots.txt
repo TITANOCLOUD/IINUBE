@@ -1,0 +1,34 @@
+# robots.txt para IINUBECLOUD INTERNATIONAL
+# https://iinube.com
+
+User-agent: *
+Allow: /
+
+# Permitir acceso a recursos estáticos
+Allow: /images/
+Allow: /public/
+Allow: /_next/static/
+
+# Bloquear directorios administrativos y privados
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/data/
+
+# Sitemap
+Sitemap: https://iinube.com/sitemap.xml
+
+# Crawl-delay para bots (opcional)
+Crawl-delay: 1
+
+# Bots específicos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
