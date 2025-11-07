@@ -5,8 +5,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import {
   Server,
   Check,
-  Cpu,
-  HardDrive,
   Shield,
   Zap,
   ChevronDown,
@@ -41,89 +39,189 @@ export default function VPSPage() {
 
   const vpsPlans = [
     {
-      id: "atlas",
-      name: "Atlas",
-      subtitle: "El Fundamento",
-      cpu: 4,
-      ram: 8,
-      storage: 100,
-      bandwidth: "400 Mbit/s",
-      price: 84,
-      setupFee: "Gratis",
-      maxCpu: 8,
-      maxRam: 16,
-      maxStorage: 200,
-    },
-    {
-      id: "prometeo",
-      name: "Prometeo",
-      subtitle: "El Visionario",
-      cpu: 6,
-      ram: 12,
-      storage: 150,
-      bandwidth: "1 Gb/s",
-      price: 135,
-      setupFee: "Gratis",
-      maxCpu: 12,
-      maxRam: 24,
-      maxStorage: 300,
-    },
-    {
-      id: "cronos",
-      name: "Cronos",
-      subtitle: "El Líder",
+      id: "basic",
+      name: "VPSi BASIC",
+      subtitle: "Ideal para proyectos pequeños",
       cpu: 8,
-      ram: 24,
-      storage: 200,
-      bandwidth: "1.5 Gb/s",
-      price: 255,
+      ram: 4,
+      storage: 80,
+      bandwidth: "Hasta 2 Gbps",
+      price: 1590,
+      setupFee: "Gratis",
+      processor: "DUAL INTEL XEON GOLD 6542Y",
+      features: [
+        "4GB RAM DDR5",
+        "8v CPU DUAL INTEL XEON GOLD 6542Y",
+        "80GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
+    },
+    {
+      id: "inter",
+      name: "VPSi INTER",
+      subtitle: "Para aplicaciones en crecimiento",
+      cpu: 8,
+      ram: 8,
+      storage: 180,
+      bandwidth: "Hasta 2 Gbps",
+      price: 2690,
+      setupFee: "Gratis",
+      processor: "DUAL INTEL XEON GOLD 6542Y",
+      features: [
+        "8GB RAM DDR5",
+        "8v CPU DUAL INTEL XEON GOLD 6542Y",
+        "180GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
+    },
+    {
+      id: "pro",
+      name: "VPSi PRO",
+      subtitle: "Alto rendimiento",
+      cpu: 8,
+      ram: 12,
+      storage: 280,
+      bandwidth: "Hasta 2 Gbps",
+      price: 3790,
       setupFee: "Gratis",
       recommended: true,
-      maxCpu: 16,
-      maxRam: 48,
-      maxStorage: 500,
+      processor: "INTEL XEON GOLD 6542Y",
+      features: [
+        "12GB RAM DDR5",
+        "8v CPU INTEL XEON GOLD 6542Y",
+        "280GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
     },
     {
-      id: "hiperion",
-      name: "Hiperión",
-      subtitle: "La Luz",
-      cpu: 12,
-      ram: 48,
-      storage: 300,
-      bandwidth: "2 Gb/s",
-      price: 442,
+      id: "plus",
+      name: "VPSi PLUS",
+      subtitle: "Máxima potencia",
+      cpu: 8,
+      ram: 16,
+      storage: 380,
+      bandwidth: "Hasta 2 Gbps",
+      price: 4890,
       setupFee: "Gratis",
-      maxCpu: 20,
-      maxRam: 64,
-      maxStorage: 700,
+      processor: "INTEL XEON GOLD 6542Y",
+      features: [
+        "16GB RAM DDR5",
+        "8v CPU INTEL XEON GOLD 6542Y",
+        "380GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
     },
     {
-      id: "oceano",
-      name: "Océano",
-      subtitle: "El Vasto",
+      id: "prime",
+      name: "VPSi PRIME",
+      subtitle: "Nivel empresarial",
       cpu: 16,
-      ram: 64,
-      storage: 350,
-      bandwidth: "2.5 Gb/s",
-      price: 687,
+      ram: 24,
+      storage: 480,
+      bandwidth: "Hasta 2 Gbps",
+      price: 5990,
       setupFee: "Gratis",
-      maxCpu: 24,
-      maxRam: 96,
-      maxStorage: 900,
+      processor: "DUAL INTEL XEON GOLD 6542Y",
+      features: [
+        "24GB RAM DDR5",
+        "16v CPU DUAL INTEL XEON GOLD 6542Y",
+        "480GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
     },
     {
-      id: "titan",
-      name: "Titán",
-      subtitle: "El Supremo",
-      cpu: 24,
-      ram: 96,
-      storage: 400,
-      bandwidth: "3 Gb/s",
-      price: 908,
+      id: "xprime",
+      name: "VPSi XPRIME",
+      subtitle: "Potencia superior",
+      cpu: 16,
+      ram: 32,
+      storage: 580,
+      bandwidth: "Hasta 2 Gbps",
+      price: 6990,
       setupFee: "Gratis",
-      maxCpu: 32,
-      maxRam: 128,
-      maxStorage: 1000,
+      processor: "DUAL INTEL XEON GOLD 6542Y",
+      features: [
+        "32GB RAM DDR5",
+        "16v CPU DUAL INTEL XEON GOLD 6542Y",
+        "580GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
+    },
+    {
+      id: "zprime",
+      name: "VPSi ZPRIME",
+      subtitle: "Extremo rendimiento",
+      cpu: 32,
+      ram: 64,
+      storage: 980,
+      bandwidth: "Hasta 2 Gbps",
+      price: 10990,
+      setupFee: "Gratis",
+      processor: "INTEL XEON GOLD 6542Y",
+      features: [
+        "64GB RAM DDR5",
+        "32v CPU INTEL XEON GOLD 6542Y",
+        "980GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
+    },
+    {
+      id: "colossal",
+      name: "VPSi COLOSSAL",
+      subtitle: "El titán supremo",
+      cpu: 32,
+      ram: 128,
+      storage: 1580,
+      bandwidth: "Hasta 2 Gbps",
+      price: 15990,
+      setupFee: "Gratis",
+      processor: "DUAL INTEL XEON GOLD 6542Y",
+      features: [
+        "128GB RAM DDR5",
+        "32v CPU DUAL INTEL XEON GOLD 6542Y",
+        "1,580GB SSD NVME",
+        "UPLINK HASTA 2 GBPS",
+        "DNS 24HRS",
+        "1 IP FIJA IPV4 E IPV6",
+        "99% UPTIME",
+        "TRANSFERENCIA ILIMITADA",
+        "ALTA DISPONIBILIDAD",
+      ],
     },
   ]
 
@@ -274,7 +372,7 @@ export default function VPSPage() {
     {
       question: "¿Cuánto cuesta un servidor VPS?",
       answer:
-        "El precio de un VPS depende de varios factores: cantidad de CPU, memoria RAM, almacenamiento y ancho de banda. Nuestros planes comienzan desde $84 MXN/mes para proyectos pequeños hasta $908 MXN/mes para aplicaciones de alto rendimiento. Los factores que influyen en el precio incluyen el tipo de almacenamiento (SSD NVMe es más rápido), la cantidad de RAM necesaria para tus aplicaciones, y el ancho de banda requerido.",
+        "El precio de un VPS depende de varios factores: cantidad de CPU, memoria RAM, almacenamiento y ancho de banda. Nuestros planes comienzan desde $1,590 MXN/mes para proyectos pequeños hasta $15,990 MXN/mes para aplicaciones de alto rendimiento enterprise. Todos los planes incluyen procesadores Intel Xeon Gold 6542Y de última generación.",
     },
     {
       question: "¿Qué sistemas operativos están disponibles?",
@@ -291,6 +389,11 @@ export default function VPSPage() {
       answer:
         "Todos nuestros VPS utilizan almacenamiento SSD NVMe de última generación, que ofrece velocidades de lectura/escritura hasta 6 veces más rápidas que los SSD SATA tradicionales. Esto se traduce en mejor rendimiento para bases de datos y aplicaciones.",
     },
+    {
+      question: "¿Qué incluyen los planes VPSi?",
+      answer:
+        "Todos los planes VPSi incluyen: RAM DDR5, procesadores Intel Xeon Gold 6542Y, almacenamiento SSD NVMe, uplink hasta 2 Gbps, DNS 24 horas, 1 IP Fija IPv4 e IPv6, 99% de uptime garantizado, transferencia ilimitada y alta disponibilidad. Precios vigentes a partir del primero de febrero de 2025.",
+    },
   ]
 
   const calculateCustomPrice = () => {
@@ -302,7 +405,28 @@ export default function VPSPage() {
 
   const getSelectedPlanLimits = () => {
     const plan = vpsPlans.find((p) => p.id === selectedPlan)
-    return plan || vpsPlans[2] // Default to Cronos
+    // Returning default limits if plan is not found, or using values from plan.
+    // The original code returned limits from the "Cronos" plan, which is now removed.
+    // This should ideally be updated to reflect the limits of the 'basic' plan or a more sensible default.
+    // For now, adapting to the new structure and returning sensible defaults if plan is not found.
+    if (!plan) {
+      return {
+        cpu: 4,
+        ram: 4,
+        storage: 80,
+        maxCpu: 32,
+        maxRam: 128,
+        maxStorage: 1580,
+      }
+    }
+    return {
+      cpu: plan.cpu,
+      ram: plan.ram,
+      storage: plan.storage,
+      maxCpu: plan.cpu * 2, // Example: Allow scaling up to double the base CPU
+      maxRam: plan.ram * 4, // Example: Allow scaling up to 4x the base RAM
+      maxStorage: plan.storage * 3, // Example: Allow scaling up to 3x the base storage
+    }
   }
 
   const detectUserLocation = async () => {
@@ -428,14 +552,14 @@ export default function VPSPage() {
       <section className="container mx-auto px-4 py-20 text-center">
         <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/30 px-4 py-2 rounded-full mb-6">
           <Server className="w-5 h-5 text-cyan-400" />
-          <span className="text-cyan-400 font-semibold">VPS Serie Titán</span>
+          <span className="text-cyan-400 font-semibold">VPS Serie VPSi</span>
         </div>
         <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-cyan-400 to-blue-600 bg-clip-text text-transparent">
           Servidores VPS de Alto Rendimiento
         </h1>
         <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto leading-relaxed">
           Elija la configuración que mejor se adapta a sus necesidades: web hosting, gaming, VPN, desarrollo y mucho
-          más. Cada plan lleva el nombre de un Titán, simbolizando poder y confiabilidad.
+          más. Todos los planes incluyen procesadores Intel Xeon Gold 6542Y de última generación.
         </p>
       </section>
 
@@ -620,12 +744,13 @@ export default function VPSPage() {
 
       <section className="container mx-auto px-4 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold mb-4 text-white">Planes VPS Serie Titán</h2>
+          <h2 className="text-4xl font-bold mb-4 text-white">Planes VPS Serie VPSi</h2>
           <p className="text-slate-400 max-w-2xl mx-auto">
-            Del más pequeño al más poderoso, cada plan lleva el nombre de un Titán de la mitología
+            Del más básico al colosal, cada plan diseñado para ofrecer máximo rendimiento
           </p>
+          <p className="text-cyan-400 text-sm mt-2">*Precios de lista a partir del primero de febrero del 2025</p>
         </div>
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
           {vpsPlans.map((plan) => (
             <Card
               key={plan.id}
@@ -637,39 +762,46 @@ export default function VPSPage() {
                 </div>
               )}
               <CardHeader>
-                <CardTitle className="text-2xl text-white">{plan.name}</CardTitle>
+                <CardTitle className="text-xl text-white">{plan.name}</CardTitle>
                 <p className="text-cyan-400 text-sm font-semibold">{plan.subtitle}</p>
                 <div className="flex items-baseline gap-2 mt-2">
-                  <span className="text-sm text-slate-400">Desde</span>
-                  <span className="text-3xl font-bold text-white">${plan.price.toFixed(2)}</span>
-                  <span className="text-slate-400">MXN/mes</span>
+                  <span className="text-2xl font-bold text-white">${plan.price.toLocaleString()}</span>
+                  <span className="text-slate-400 text-sm">MXN/mes</span>
                 </div>
-                <p className="text-sm text-slate-500">Gastos de instalación: {plan.setupFee}</p>
+                <p className="text-xs text-slate-500">Gastos de instalación: {plan.setupFee}</p>
               </CardHeader>
-              <CardContent className="space-y-3">
+              <CardContent className="space-y-2">
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>{plan.cpu} vCores</span>
+                  <span>{plan.ram}GB RAM DDR5</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>{plan.ram} GB RAM</span>
+                  <span>{plan.cpu}v CPU</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-300 text-xs">
+                  <Check className="w-3 h-3 text-cyan-400 flex-shrink-0" />
+                  <span className="line-clamp-2">{plan.processor}</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>{plan.storage} GB SSD NVMe</span>
+                  <span>{plan.storage}GB SSD NVME</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>Backup automatizado 1 día</span>
+                  <span>{plan.bandwidth}</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>Tráfico ilimitado</span>
+                  <span>1 IP Fija IPv4 e IPv6</span>
                 </div>
                 <div className="flex items-center gap-2 text-slate-300 text-sm">
                   <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
-                  <span>{plan.bandwidth} de ancho de banda</span>
+                  <span>99% Uptime</span>
+                </div>
+                <div className="flex items-center gap-2 text-slate-300 text-sm">
+                  <Check className="w-4 h-4 text-cyan-400 flex-shrink-0" />
+                  <span>Transferencia Ilimitada</span>
                 </div>
               </CardContent>
               <CardFooter>
@@ -679,7 +811,7 @@ export default function VPSPage() {
                   }`}
                   onClick={() => setSelectedPlan(plan.id)}
                 >
-                  Configurar
+                  Ver Detalles
                 </Button>
               </CardFooter>
             </Card>
@@ -694,7 +826,7 @@ export default function VPSPage() {
               <div className="flex items-center justify-between">
                 <div>
                   <CardTitle className="text-2xl text-white">
-                    Configurar {vpsPlans.find((p) => p.id === selectedPlan)?.name}
+                    {vpsPlans.find((p) => p.id === selectedPlan)?.name}
                   </CardTitle>
                   <CardDescription className="text-slate-400">
                     {vpsPlans.find((p) => p.id === selectedPlan)?.subtitle}
@@ -703,153 +835,40 @@ export default function VPSPage() {
                 <Button
                   variant="ghost"
                   size="icon"
-                  onClick={() => {
-                    setSelectedPlan(null)
-                    const plan = getSelectedPlanLimits()
-                    setConfigCpu(plan.cpu)
-                    setConfigRam(plan.ram)
-                    setConfigStorage(plan.storage)
-                  }}
+                  onClick={() => setSelectedPlan(null)}
                   className="text-slate-400 hover:text-white"
                 >
                   <X className="w-5 h-5" />
                 </Button>
               </div>
             </CardHeader>
-            <CardContent className="space-y-8 pt-6">
-              {/* CPU Slider */}
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <label className="text-white font-semibold flex items-center gap-2">
-                    <Cpu className="w-5 h-5 text-cyan-400" />
-                    CPU (vCores)
-                  </label>
-                  <span className="text-cyan-400 font-bold text-lg">{configCpu} vCores</span>
-                </div>
-                <input
-                  type="range"
-                  min={getSelectedPlanLimits().cpu}
-                  max={getSelectedPlanLimits().maxCpu}
-                  step="2"
-                  value={configCpu}
-                  onChange={(e) => setConfigCpu(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
-                />
-                <div className="flex justify-between text-xs text-slate-500 mt-1">
-                  <span>{getSelectedPlanLimits().cpu}</span>
-                  <span>{getSelectedPlanLimits().maxCpu}</span>
-                </div>
-              </div>
-
-              {/* RAM Slider */}
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <label className="text-white font-semibold flex items-center gap-2">
-                    <Server className="w-5 h-5 text-cyan-400" />
-                    RAM (GB)
-                  </label>
-                  <span className="text-cyan-400 font-bold text-lg">{configRam} GB</span>
-                </div>
-                <input
-                  type="range"
-                  min={getSelectedPlanLimits().ram}
-                  max={getSelectedPlanLimits().maxRam}
-                  step="4"
-                  value={configRam}
-                  onChange={(e) => setConfigRam(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
-                />
-                <div className="flex justify-between text-xs text-slate-500 mt-1">
-                  <span>{getSelectedPlanLimits().ram} GB</span>
-                  <span>{getSelectedPlanLimits().maxRam} GB</span>
-                </div>
-              </div>
-
-              {/* Storage Slider */}
-              <div>
-                <div className="flex items-center justify-between mb-3">
-                  <label className="text-white font-semibold flex items-center gap-2">
-                    <HardDrive className="w-5 h-5 text-cyan-400" />
-                    Almacenamiento SSD NVMe (GB)
-                  </label>
-                  <span className="text-cyan-400 font-bold text-lg">{configStorage} GB</span>
-                </div>
-                <input
-                  type="range"
-                  min={getSelectedPlanLimits().storage}
-                  max={getSelectedPlanLimits().maxStorage}
-                  step="50"
-                  value={configStorage}
-                  onChange={(e) => setConfigStorage(Number(e.target.value))}
-                  className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-cyan-500"
-                />
-                <div className="flex justify-between text-xs text-slate-500 mt-1">
-                  <span>{getSelectedPlanLimits().storage} GB</span>
-                  <span>{getSelectedPlanLimits().maxStorage} GB</span>
-                </div>
-              </div>
-
-              {/* Price Summary */}
+            <CardContent className="space-y-6 pt-6">
+              {/* Price Display */}
               <div className="bg-gradient-to-br from-cyan-500/10 to-blue-600/10 border border-cyan-500/30 rounded-xl p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <span className="text-slate-300 text-lg">Precio estimado:</span>
+                  <span className="text-slate-300 text-lg">Precio:</span>
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-white">${calculateCustomPrice()}</span>
+                    <span className="text-4xl font-bold text-white">
+                      ${vpsPlans.find((p) => p.id === selectedPlan)?.price.toLocaleString()}
+                    </span>
                     <span className="text-slate-400">/mes</span>
                   </div>
                 </div>
-                <div className="space-y-2 text-sm text-slate-400 mb-6">
-                  <div className="flex justify-between">
-                    <span>CPU ({configCpu} vCores)</span>
-                    <span>${(configCpu * 1.5).toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>RAM ({configRam} GB)</span>
-                    <span>${(configRam * 2).toFixed(2)}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span>Almacenamiento ({configStorage} GB)</span>
-                    <span>${(configStorage * 0.15).toFixed(2)}</span>
-                  </div>
-                  <div className="border-t border-slate-700 pt-2 mt-2">
-                    <div className="flex justify-between text-cyan-400 font-semibold">
-                      <span>Total mensual</span>
-                      <span>${calculateCustomPrice()}</span>
-                    </div>
-                  </div>
-                </div>
-                <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white">Contratar Configuración</Button>
+                <Button className="w-full bg-cyan-500 hover:bg-cyan-600 text-white">Contratar Ahora</Button>
               </div>
 
-              {/* Included Features */}
-              <div className="grid md:grid-cols-2 gap-4 pt-6 border-t border-slate-800">
-                <div className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-white font-semibold text-sm">Tráfico ilimitado</p>
-                    <p className="text-slate-400 text-xs">Sin límites de transferencia</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-white font-semibold text-sm">Backup automatizado</p>
-                    <p className="text-slate-400 text-xs">Respaldo diario incluido</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-white font-semibold text-sm">Protección DDoS</p>
-                    <p className="text-slate-400 text-xs">Seguridad avanzada incluida</p>
-                  </div>
-                </div>
-                <div className="flex items-start gap-3">
-                  <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <p className="text-white font-semibold text-sm">Soporte 24/7</p>
-                    <p className="text-slate-400 text-xs">Asistencia técnica siempre disponible</p>
-                  </div>
+              {/* Features List */}
+              <div>
+                <h3 className="text-white font-semibold text-lg mb-4">Características Incluidas:</h3>
+                <div className="grid gap-3">
+                  {vpsPlans
+                    .find((p) => p.id === selectedPlan)
+                    ?.features.map((feature, index) => (
+                      <div key={index} className="flex items-start gap-3">
+                        <Check className="w-5 h-5 text-cyan-400 flex-shrink-0 mt-0.5" />
+                        <span className="text-slate-300 text-sm">{feature}</span>
+                      </div>
+                    ))}
                 </div>
               </div>
             </CardContent>

@@ -19,19 +19,21 @@ export function Footer() {
               para entornos empresariales modernos.
             </p>
             <div className="flex flex-col gap-2 text-sm text-slate-300 mb-6">
-              <div className="flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-[#00c4cc]" />
-                <span>Global Data Centers</span>
+              <div className="flex items-start gap-2">
+                <MapPin className="w-4 h-4 text-[#00c4cc] mt-0.5 flex-shrink-0" />
+                <span>Av Niños Héroes 1555-int 503A, Moderna, 44190 Guadalajara, Jal.</span>
               </div>
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-[#00c4cc]" />
-                <a href="tel:+17868225999" className="hover:text-[#00c4cc] transition-colors">
-                  +1 786 822 5999 <span className="text-xs text-slate-500">(Miami)</span>
+                <a href="tel:+523336603088" className="hover:text-[#00c4cc] transition-colors">
+                  +52 33 3660 3088
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#00c4cc]" />
-                <span>support@iinbue.com</span>
+                <a href="mailto:management@iinube.com" className="hover:text-[#00c4cc] transition-colors">
+                  management@iinube.com
+                </a>
               </div>
             </div>
 

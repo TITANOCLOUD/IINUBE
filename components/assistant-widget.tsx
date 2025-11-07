@@ -1,16 +1,28 @@
 "use client"
 
+import type React from "react"
+
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
-import { X, MessageCircle, Phone } from "lucide-react"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { X, MessageCircle, Phone, Send } from "lucide-react"
 import { usePathname } from "next/navigation"
 
 export function AssistantWidget() {
   const [isOpen, setIsOpen] = useState(false)
   const [isMinimized, setIsMinimized] = useState(false)
+  const [showContactForm, setShowContactForm] = useState(false)
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [userName, setUserName] = useState("")
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const pathname = usePathname()
 
   useEffect(() => {
@@ -42,6 +54,25 @@ export function AssistantWidget() {
   // Don't show on dashboard or login pages
   if (pathname?.startsWith("/dashboard") || pathname?.startsWith("/login")) {
     return null
+  }
+
+  const handleFormSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Option 1: Send via WhatsApp
+    const whatsappNumber = "5213328346167"
+    const whatsappMessage = `Hola, me llamo ${formData.name}.\n\nEmail: ${formData.email}\nTeléfono: ${formData.phone}\n\nMensaje: ${formData.message}`
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`
+
+    window.open(whatsappUrl, "_blank")
+
+    // Option 2: Send via Email (if you want both options)
+    // You can implement a server action here to send email to management@iinube.com
+
+    setIsSubmitting(false)
+    setShowContactForm(false)
+    setFormData({ name: "", email: "", phone: "", message: "" })
   }
 
   const getContextualMessage = () => {
@@ -135,7 +166,10 @@ export function AssistantWidget() {
                 <Button
                   size="sm"
                   variant="ghost"
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => {
+                    setIsOpen(false)
+                    setShowContactForm(false)
+                  }}
                   className="h-8 w-8 p-0 text-gray-400 hover:text-white hover:bg-slate-700"
                 >
                   <X className="h-4 w-4" />
@@ -143,32 +177,108 @@ export function AssistantWidget() {
               </div>
             </div>
 
-            {/* Message */}
-            <div className="bg-slate-700/50 rounded-lg p-3 mb-4">
-              <p className="text-sm text-gray-200 leading-relaxed">{getContextualMessage()}</p>
-            </div>
+            {!showContactForm ? (
+              <>
+                {/* Message */}
+                <div className="bg-slate-700/50 rounded-lg p-3 mb-4">
+                  <p className="text-sm text-gray-200 leading-relaxed">{getContextualMessage()}</p>
+                </div>
 
-            {/* Action Buttons */}
-            <div className="space-y-2">
-              <Button
-                className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
-                onClick={() => (window.location.href = "/contacto")}
-              >
-                <MessageCircle className="h-4 w-4 mr-2" />
-                Enviar Mensaje
-              </Button>
-              <Button
-                variant="outline"
-                className="w-full border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 bg-transparent"
-                onClick={() => (window.location.href = "tel:+1234567890")}
-              >
-                <Phone className="h-4 w-4 mr-2" />
-                Llamar Ahora
-              </Button>
-            </div>
+                {/* Action Buttons */}
+                <div className="space-y-2">
+                  <Button
+                    className="w-full bg-cyan-500 hover:bg-cyan-600 text-white"
+                    onClick={() => setShowContactForm(true)}
+                  >
+                    <MessageCircle className="h-4 w-4 mr-2" />
+                    Enviar Mensaje
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-cyan-400 text-cyan-400 hover:bg-cyan-400/10 bg-transparent"
+                    onClick={() => window.open("tel:+5213328346167", "_self")}
+                  >
+                    <Phone className="h-4 w-4 mr-2" />
+                    Llamar Ahora
+                  </Button>
+                </div>
 
-            {/* Footer */}
-            <p className="text-xs text-gray-500 text-center mt-3">Estoy disponible para ayudarte 24/7</p>
+                {/* Footer */}
+                <p className="text-xs text-gray-500 text-center mt-3">Estoy disponible para ayudarte 24/7</p>
+              </>
+            ) : (
+              <>
+                <form onSubmit={handleFormSubmit} className="space-y-3">
+                  <div className="bg-slate-700/50 rounded-lg p-3 mb-3">
+                    <p className="text-xs text-gray-300">
+                      Completa tus datos y te contactaré de inmediato por WhatsApp
+                    </p>
+                  </div>
+
+                  <div>
+                    <Input
+                      placeholder="Tu nombre completo"
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      required
+                      className="bg-slate-800 border-slate-600 text-white placeholder:text-gray-400"
+                    />
+                  </div>
+
+                  <div>
+                    <Input
+                      type="email"
+                      placeholder="Tu correo electrónico"
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      required
+                      className="bg-slate-800 border-slate-600 text-white placeholder:text-gray-400"
+                    />
+                  </div>
+
+                  <div>
+                    <Input
+                      type="tel"
+                      placeholder="Tu teléfono (WhatsApp)"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      required
+                      className="bg-slate-800 border-slate-600 text-white placeholder:text-gray-400"
+                    />
+                  </div>
+
+                  <div>
+                    <Textarea
+                      placeholder="¿En qué puedo ayudarte?"
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      required
+                      rows={3}
+                      className="bg-slate-800 border-slate-600 text-white placeholder:text-gray-400 resize-none"
+                    />
+                  </div>
+
+                  <div className="flex gap-2">
+                    <Button
+                      type="button"
+                      variant="outline"
+                      onClick={() => setShowContactForm(false)}
+                      className="flex-1 border-slate-600 text-gray-300 hover:bg-slate-700"
+                    >
+                      Cancelar
+                    </Button>
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="flex-1 bg-cyan-500 hover:bg-cyan-600 text-white"
+                    >
+                      <Send className="h-4 w-4 mr-2" />
+                      {isSubmitting ? "Enviando..." : "Enviar"}
+                    </Button>
+                  </div>
+                </form>
+              </>
+            )}
           </div>
         </Card>
       )}
