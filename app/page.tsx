@@ -17,7 +17,7 @@ import {
   Send,
 } from "lucide-react"
 import Image from "next/image"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { getFeaturedVPSPlans } from "@/data/vps-plans"
 
 export default function Home() {
@@ -25,9 +25,9 @@ export default function Home() {
   const [messages, setMessages] = useState<Array<{ role: "user" | "assistant"; content: string }>>([])
   const [userInput, setUserInput] = useState("")
   const [isAnalyzing, setIsAnalyzing] = useState(false)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [showLoginPrompt, setShowLoginPrompt] = useState(false)
   const [requiresCaptcha, setRequiresCaptcha] = useState(false)
+  const messagesEndRef = useRef<HTMLDivElement>(null)
 
   const slides = [
     {
@@ -87,7 +87,7 @@ export default function Home() {
   useEffect(() => {
     const checkAuth = () => {
       const authStatus = localStorage.getItem("isAuthenticated") === "true"
-      setIsAuthenticated(authStatus)
+      // setIsAuthenticated(authStatus) // This state is no longer used, so it's commented out.
       console.log("[v0] Authentication status:", authStatus)
     }
 
@@ -114,57 +114,38 @@ export default function Home() {
     }
   }, [])
 
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" })
+  }, [messages])
+
   const handleSendMessage = async () => {
-    if (!userInput.trim()) return
+    if (!userInput.trim() || isAnalyzing) return
 
-    console.log("[v0] Sending message, isAuthenticated:", isAuthenticated) // added debug log
+    console.log("[v0] Sending message to AI")
 
-    // Add user message to chat
-    const newMessages = [...messages, { role: "user" as const, content: userInput }]
-    setMessages(newMessages)
+    const newUserMessage = { role: "user" as const, content: userInput }
+    const updatedMessages = [...messages, newUserMessage]
+
+    setMessages(updatedMessages)
     setUserInput("")
     setIsAnalyzing(true)
 
     try {
-      console.log("[v0] Calling API with messages:", newMessages) // added debug log
-
       const response = await fetch("/api/loise/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          messages: newMessages,
-          isAuthenticated,
-        }),
+        body: JSON.stringify({ messages: updatedMessages }),
       })
 
-      console.log("[v0] API response status:", response.status) // added debug log
+      console.log("[v0] API response status:", response.status)
 
       if (!response.ok) {
         const errorData = await response.json()
-        console.log("[v0] API error data:", errorData) // added debug log
-
-        if (errorData.requiresLogin) {
-          setShowLoginPrompt(true)
-          setMessages([
-            ...newMessages,
-            {
-              role: "assistant",
-              content: errorData.message,
-            },
-          ])
-          setIsAnalyzing(false)
-          return
-        }
+        console.log("[v0] API error:", errorData)
 
         if (errorData.requiresCaptcha) {
           setRequiresCaptcha(true)
-          setMessages([
-            ...newMessages,
-            {
-              role: "assistant",
-              content: errorData.message,
-            },
-          ])
+          setMessages([...updatedMessages, { role: "assistant", content: errorData.message }])
           setIsAnalyzing(false)
           return
         }
@@ -172,34 +153,64 @@ export default function Home() {
         throw new Error(errorData.message || "Error al procesar la solicitud")
       }
 
-      // Stream the response
       const reader = response.body?.getReader()
       const decoder = new TextDecoder()
       let assistantMessage = ""
+      const assistantMessageIndex = updatedMessages.length
 
       if (reader) {
+        // Add empty assistant message
+        setMessages([...updatedMessages, { role: "assistant", content: "" }])
+
         while (true) {
           const { done, value } = await reader.read()
           if (done) break
 
-          const chunk = decoder.decode(value)
+          const chunk = decoder.decode(value, { stream: true })
           const lines = chunk.split("\n")
 
           for (const line of lines) {
-            if (line.startsWith("0:")) {
-              const content = line.slice(2).replace(/^"(.*)"$/, "$1")
-              assistantMessage += content
-              setMessages([...newMessages, { role: "assistant", content: assistantMessage }])
+            if (line.trim() === "") continue
+
+            try {
+              // Handle data stream format
+              if (line.startsWith("0:")) {
+                const jsonStr = line.slice(2)
+                const content = JSON.parse(jsonStr)
+                assistantMessage += content
+              } else if (line.startsWith("data: ")) {
+                const jsonStr = line.slice(6)
+                if (jsonStr.trim() === "[DONE]") continue
+                const data = JSON.parse(jsonStr)
+                if (data.choices?.[0]?.delta?.content) {
+                  assistantMessage += data.choices[0].delta.content
+                }
+              }
+
+              // Update the assistant message in real-time
+              setMessages((prev) => {
+                const newMessages = [...prev]
+                newMessages[assistantMessageIndex] = {
+                  role: "assistant",
+                  content: assistantMessage,
+                }
+                return newMessages
+              })
+            } catch (e) {
+              // Skip invalid JSON lines
+              console.log("[v0] Skipping invalid line:", line)
             }
           }
         }
+
+        console.log("[v0] Streaming complete, final message:", assistantMessage)
       }
 
       setIsAnalyzing(false)
     } catch (error) {
       console.error("[v0] Error sending message:", error)
       setMessages([
-        ...newMessages,
+        ...updatedMessages,
         {
           role: "assistant",
           content: "❌ Lo siento, ha ocurrido un error. Por favor, intenta de nuevo.",
@@ -214,7 +225,6 @@ export default function Home() {
   }
 
   const handleCompleteCaptcha = () => {
-    // Simulate CAPTCHA completion
     setRequiresCaptcha(false)
     setMessages([
       ...messages,
@@ -329,7 +339,7 @@ export default function Home() {
               </p>
               <p className="text-xl font-semibold text-white">
                 Si no tienes uno, aquí te presentamos a <span className="text-cyan-400">Aníbal de IINUBE</span>. Puedes
-                usarlo desde que expliques todo a detalle.
+                usarlo cuando expliques todo a detalle.
               </p>
             </div>
           </div>
@@ -350,12 +360,10 @@ export default function Home() {
                       Aníbal Hernández - Gerente de Infraestructura y Ciberseguridad
                     </p>
                     <p className="text-slate-300 text-sm">Disponible 24/7 para diseñar tu infraestructura ideal</p>
-                    {isAuthenticated && (
-                      <div className="mt-2 flex items-center gap-2">
-                        <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
-                        <span className="text-green-400 text-xs font-medium">Sesión activa</span>
-                      </div>
-                    )}
+                    <div className="mt-2 flex items-center gap-2">
+                      <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                      <span className="text-green-400 text-xs font-medium">Conectado</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -383,29 +391,35 @@ export default function Home() {
                       </p>
                     </div>
                   ) : (
-                    messages.map((msg, idx) => (
-                      <div key={idx} className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                        {msg.role === "assistant" && (
-                          <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center flex-shrink-0">
-                            <Sparkles className="w-4 h-4 text-white" />
-                          </div>
-                        )}
+                    <>
+                      {messages.map((msg, idx) => (
                         <div
-                          className={`max-w-[80%] rounded-lg p-4 ${
-                            msg.role === "user"
-                              ? "bg-cyan-500 text-white"
-                              : "bg-slate-950 text-slate-200 border border-cyan-500/30"
-                          }`}
+                          key={idx}
+                          className={`flex gap-3 ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                         >
-                          <p className="whitespace-pre-line text-sm leading-relaxed">{msg.content}</p>
-                        </div>
-                        {msg.role === "user" && (
-                          <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
-                            <span className="text-white text-sm font-bold">Tú</span>
+                          {msg.role === "assistant" && (
+                            <div className="w-8 h-8 rounded-full bg-cyan-500 flex items-center justify-center flex-shrink-0">
+                              <Sparkles className="w-4 h-4 text-white" />
+                            </div>
+                          )}
+                          <div
+                            className={`max-w-[80%] rounded-lg p-4 ${
+                              msg.role === "user"
+                                ? "bg-cyan-500 text-white"
+                                : "bg-slate-950 text-slate-200 border border-cyan-500/30"
+                            }`}
+                          >
+                            <p className="whitespace-pre-line text-sm leading-relaxed">{msg.content}</p>
                           </div>
-                        )}
-                      </div>
-                    ))
+                          {msg.role === "user" && (
+                            <div className="w-8 h-8 rounded-full bg-slate-700 flex items-center justify-center flex-shrink-0">
+                              <span className="text-white text-sm font-bold">Tú</span>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                      <div ref={messagesEndRef} />
+                    </>
                   )}
                   {isAnalyzing && (
                     <div className="flex gap-3 justify-start">
